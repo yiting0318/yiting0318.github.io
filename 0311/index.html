@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>唐詩三百首 - 相思</title>
+    <style>
+         /*因為下午很無聊，所以亂改了一下，希望老師不要介意*/
+        body {
+            text-align: center;
+            font-family: "Microsoft JhengHei", sans-serif;
+            color: #6b2b2b;
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            border-radius: 15px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            font-family: "KaiTi", "STKaiti", serif;
+            margin-top: 10px;
+            color: #8B0000;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            font-size: 20px;
+            font-family: "FangSong", "STFangsong", serif;
+            line-height: 1.8;
+            margin-top: 15px;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+
+        /* 詩句淡入動畫 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <img src="img/redbond.jpeg" alt="紅豆" width="225">
+    <h1>相思 王維</h1>
+    <p>
+        紅豆生南國，春來發幾枝？<br>
+        願君多採摘，此物最相思。<br>
+    </p>
+</body>
+</html>
