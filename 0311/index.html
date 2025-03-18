@@ -5,26 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>唐詩三百首 - 相思</title>
     <style>
-<<<<<<< Updated upstream
-        
-=======
->>>>>>> Stashed changes
+        /* 設定整體背景與置中 */
         body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             text-align: center;
             font-family: "Microsoft JhengHei", sans-serif;
             color: #6b2b2b;
             margin: 0;
             padding: 0;
+            background: linear-gradient(135deg, #fbeee6, #eac2a3);
         }
 
+        /* 詩詞容器美化 */
+        .poem-container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+            max-width: 80%;
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+
+        /* 圖片樣式 */
         img {
             border-radius: 15px;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-            margin-top: 20px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
         }
 
+        /* 標題美化 */
         h1 {
-            font-size: 28px;
+            font-size: 30px;
             font-weight: bold;
             font-family: "KaiTi", "STKaiti", serif;
             margin-top: 10px;
@@ -32,16 +47,18 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
+        /* 詩詞樣式 */
         p {
-            font-size: 20px;
+            font-size: 22px;
             font-family: "FangSong", "STFangsong", serif;
-            line-height: 1.8;
-            margin-top: 15px;
+            line-height: 2;
+            color: #5a3e36;
+            margin-top: 10px;
             opacity: 0;
             animation: fadeIn 2s ease-in-out forwards;
         }
 
-        /* 詩句淡入動畫 */
+        /* 淡入動畫 */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -49,11 +66,13 @@
     </style>
 </head>
 <body>
-    <img src="img/redbond.jpeg" alt="紅豆" width="225">
-    <h1>相思 王維</h1>
-    <p>
-        紅豆生南國，春來發幾枝？<br>
-        願君多採摘，此物最相思。<br>
-    </p>
+    <div class="poem-container">
+        <img src="img/redbond.jpeg" alt="紅豆" width="225">
+        <h1>相思 - 王維</h1>
+        <p>
+            紅豆生南國，春來發幾枝？<br>
+            願君多採摘，此物最相思。<br>
+        </p>
+    </div>
 </body>
 </html>
