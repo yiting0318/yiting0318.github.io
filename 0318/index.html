@@ -10,146 +10,148 @@
     <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(to bottom, #b3e0ff, #ffffff);
-            font-family: "Dongle", sans-serif;
             text-align: center;
-            margin: 0;
-            padding: 20px;
+            background-color: #f9f9f9;
         }
 
-        #mycard {
-            background: rgba(255, 255, 255, 0.8);
-            width: 80%;
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        #mymedia {
-            margin-bottom: 20px;
-        }
-
-        iframe {
-            width: 100%;
-            max-width: 560px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        h1 {
-            font-size: 50px;
+        .dongle-regular {
+            font-family: "Dongle", sans-serif;
+            font-weight: 400;
+            font-style: normal;
             color: darkblue;
+            font-size: 30px;
+            line-height: 1.4;
+        }
+
+        .chinese-text {
+            font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
+            font-weight: 500;
+            color: brown;
+            font-size: 24px;
             margin-bottom: 10px;
         }
 
+        /* 影片區塊置中 */
+        #mymedia {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        /* 影片大小調整 */
+        #mymedia iframe {
+            width: 80vw;
+            height: 45vw;
+            max-width: 1120px;
+            max-height: 630px;
+        }
+
+        /* 歌詞區塊 */
         .lyrics {
-            font-size: 30px;
-            color: darkblue;
+            margin-top: 20px;
+        }
+
+        .lyrics h2 {
             margin-bottom: 5px;
         }
 
-        .translation {
-            font-size: 22px;
-            color: brown;
-            margin-bottom: 15px;
-        }
-
-        .lyrics-container {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .lyrics-container:last-child {
-            border-bottom: none;
+        .lyrics h4 {
+            margin-top: 0;
         }
     </style>
 </head>
 
 <body>
 
-    <div id="mycard">
-        <div id="mymedia">
-            <iframe src="https://www.youtube.com/embed/x-Om0G8Dwis?si=QAwKO_SBCEWVgssM"
-                title="YouTube video player" allowfullscreen></iframe>
-        </div>
+    <div id="mymedia">
+        <iframe src="https://www.youtube.com/embed/x-Om0G8Dwis?si=QAwKO_SBCEWVgssM"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
 
-        <div id="caption">
-            <h1>첫 만남은 계획대로 되지 않아</h1>
-        </div>
+    <div id="caption" class="dongle-regular">
+        <h1>첫 만남은 계획대로 되지 않아</h1>
+    </div>
 
-        <div id="maincontent">
-            <div class="lyrics-container">
-                <div class="lyrics">Ay ay ay ay ay</div>
-            </div>
+    <div id="maincontent" class="dongle-regular lyrics">
+        <h2>거울 속에 내 표정 봐 봐</h2>
+        <h4 class="chinese-text">看著鏡中自己的表情</h4>
 
-            <div class="lyrics-container">
-                <div class="lyrics">거울 속에 내 표정 봐 봐</div>
-                <div class="translation">看著鏡中自己的表情</div>
-            </div>
+        <h2>느낌 so good 기다려온 d-day</h2>
+        <h4 class="chinese-text">感覺棒極了，這一日期待已久</h4>
 
-            <div class="lyrics-container">
-                <div class="lyrics">느낌 so good 기다려온 d-day</div>
-                <div class="translation">感覺 棒極了 這一日 期待已久</div>
-            </div>
+        <h2>연습했던 손든 인사도 그대로 하면 돼</h2>
+        <h4 class="chinese-text">曾練習過的舉手問候，只要如實去做就好</h4>
 
-            <div class="lyrics-container">
-                <div class="lyrics">연습했던 손든 인사도 그대로 하면 돼</div>
-                <div class="translation">曾練習過的舉手 問候 只要練習時去做就好</div>
-            </div>
+        <h2>Hairstyle check하고 한 번 turn around</h2>
+        <h4 class="chinese-text">再檢查多幾遍髮型，轉個圈看看</h4>
 
-            <div class="lyrics-container">
-                <div class="lyrics">Hairstyle check하고 한 번 turn around</div>
-                <div class="translation">再檢查多幾遍髮型 轉個圈看看</div>
-            </div>
+        <h2>발걸음은 매일 걷던 그 길로</h2>
+        <h4 class="chinese-text">向著那條當初每天都會走過的路</h4>
 
-            <div class="lyrics-container">
-                <div class="lyrics">발걸음은 매일 걷던 그 길로</div>
-                <div class="translation">向著那條當初每天都會走過的路</div>
-            </div>
+        <h2>계획은 완벽</h2>
+        <h4 class="chinese-text">計劃完美無缺</h4>
 
-            <div class="lyrics-container">
-                <div class="lyrics">첫 만남은 너무 어려워</div>
-                <div class="translation">初次見面 真的很不容易</div>
-            </div>
+        <h2>빨리 말 걸어보고 싶어 hey</h2>
+        <h4 class="chinese-text">我想更快些跟你搭上話 hey</h4>
 
-            <div class="lyrics-container">
-                <div class="lyrics">계획대로 되는 게 없어서</div>
-                <div class="translation">完全沒有按照計劃執行</div>
-            </div>
+        <h2>Woo 문 앞에서 셋을 세어본다 yeh</h2>
+        <h4 class="chinese-text">Woo 試著在門前數三下吧 yeh</h4>
 
-            <div class="lyrics-container">
-                <div class="lyrics">첫 만남은 너무 어려워</div>
-                <div class="translation">初次見面 完全手忙腳亂</div>
-            </div>
+        <h2>셋 둘 하나</h2>
+        <h4 class="chinese-text">三 二 一</h4>
 
-            <div class="lyrics-container">
-                <div class="lyrics">내 이름은 말야</div>
-                <div class="translation">我的名字是</div>
-            </div>
+        <h2>첫 만남은 너무 어려워</h2>
+        <h4 class="chinese-text">初次見面真的很不容易</h4>
 
-            <div class="lyrics-container">
-                <div class="lyrics">우리의 사이 beautiful</div>
-                <div class="translation">我們的關係 是那般純粹美好</div>
-            </div>
+        <h2>계획대로 되는 게 없어서</h2>
+        <h4 class="chinese-text">完全沒有按照計劃執行</h4>
 
-            <div class="lyrics-container">
-                <div class="lyrics">내일도 내일모레도</div>
-                <div class="translation">無論是明天 還是後天</div>
-            </div>
+        <h2>첫 만남은 너무 어려워</h2>
+        <h4 class="chinese-text">初次見面完全手忙腳亂</h4>
 
-            <div class="lyrics-container">
-                <div class="lyrics">기억해 영원히 반짝일 순간</div>
-                <div class="translation">這閃耀的瞬間 請永遠銘刻於心吧</div>
-            </div>
+        <h2>내 이름은 말야</h2>
+        <h4 class="chinese-text">我的名字是...</h4>
 
-            <div class="lyrics-container">
-                <div class="lyrics">내일 또 봐 안녕</div>
-                <div class="translation">再會啦 明天見！？</div>
-            </div>
-        </div>
+        <h2>Hey 안녕 첫 마디를 건넬 때</h2>
+        <h4 class="chinese-text">嘿 你好，當我說出第一句話時</h4>
 
+        <h2>주변 소린 canceled</h2>
+        <h4 class="chinese-text">我的四周瞬間靜音</h4>
+
+        <h2>네 말소리는 playlist</h2>
+        <h4 class="chinese-text">你的聲音便是播放列表</h4>
+
+        <h2>질문은 나의 용기 알려줘 너의</h2>
+        <h4 class="chinese-text">發出疑問，是我僅剩的勇氣</h4>
+
+        <h2>"이름이 뭐야"</h2>
+        <h4 class="chinese-text">“你的名字叫什麼呢？”</h4>
+
+        <h2>너와 내 거리는 세 걸음 남았어 yeh</h2>
+        <h4 class="chinese-text">我和你的距離，只剩下三步 yeh</h4>
+
+        <h2>셋 둘 하나</h2>
+        <h4 class="chinese-text">三 二 一</h4>
+
+        <h2>이 순간 feels so wonderful</h2>
+        <h4 class="chinese-text">這瞬間實在妙不可言</h4>
+
+        <h2>조금은 뚝딱거려도</h2>
+        <h4 class="chinese-text">即使還有些忐忑不安</h4>
+
+        <h2>너와 나의 첫 만남</h2>
+        <h4 class="chinese-text">我和你的初次見面</h4>
+
+        <h2>우리의 사이 beautiful</h2>
+        <h4 class="chinese-text">我們的關係美好純粹</h4>
+
+        <h2>기억해 영원히 반짝일 순간</h2>
+        <h4 class="chinese-text">這閃耀的瞬間，請永遠銘刻於心</h4>
+
+        <h2>Na na na 내일 또 봐 안녕</h2>
+        <h4 class="chinese-text">Na na na，明天見，拜拜！</h4>
     </div>
 
 </body>
