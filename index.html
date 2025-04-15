@@ -5,22 +5,23 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>怡婷的網站</title>
+
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- 字體 -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
 
   <style>
     body {
       background: linear-gradient(135deg, #fceaff, #d0e8ff, #fce3ec);
-      color: #333;
-      font-family: "Noto Sans TC", sans-serif;
-      padding: 30px 15px;
-      text-align: center;
-      position: relative;
+      font-family: 'Noto Sans TC', sans-serif;
+      margin: 0;
+      padding: 0;
       overflow-x: hidden;
     }
 
+    /* 星星動畫 */
     .star {
       position: absolute;
       width: 8px;
@@ -29,32 +30,38 @@
       border-radius: 50%;
       animation: twinkle 2s infinite ease-in-out;
       opacity: 0.7;
+      z-index: 1;
     }
 
     @keyframes twinkle {
-      0%, 100% {
+
+      0%,
+      100% {
         opacity: 0.5;
         transform: scale(1);
       }
+
       50% {
         opacity: 1;
         transform: scale(1.5);
       }
     }
 
+    /* 雲動畫 */
     .cloud {
       position: absolute;
-      background: #ffffff;
+      background: #fff;
       border-radius: 50%;
       opacity: 0.3;
       animation: floatCloud 60s linear infinite;
+      z-index: 0;
     }
 
-    .cloud::after,
-    .cloud::before {
+    .cloud::before,
+    .cloud::after {
       content: '';
       position: absolute;
-      background: #ffffff;
+      background: #fff;
       border-radius: 50%;
     }
 
@@ -90,54 +97,69 @@
       }
     }
 
+    /* 導覽列 */
+    .navbar {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.6) !important;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      color: #5b8fc9 !important;
+    }
+
+    /* 標題 */
     h1 {
-      font-size: 42px;
+      font-size: 3rem;
       color: #5b8fc9;
-      margin-bottom: 30px;
+      margin: 40px 0 20px;
+      text-align: center;
       animation: fadeInDown 1s ease-in-out;
     }
 
-    .container {
+    /* 主內容容器 */
+    .container-content {
       max-width: 1100px;
       margin: auto;
+      padding: 20px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
-      animation: fadeIn 1.2s ease-in;
       position: relative;
       z-index: 2;
+      animation: fadeIn 1.2s ease-in;
     }
 
-    .poem-block {
+    .card-custom {
       background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(12px);
       padding: 25px;
       border-radius: 20px;
-      border: 2px solid rgba(100, 149, 237, 0.4);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      border: 2px solid rgba(100, 149, 237, 0.2);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
     }
 
-    .poem-block:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    .card-custom:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
     }
 
-    h2 {
-      font-size: 24px;
+    .card-custom h2 {
+      font-size: 1.5rem;
       color: #4682b4;
       margin-bottom: 15px;
-      letter-spacing: 1px;
     }
 
-    p {
-      font-size: 18px;
+    .card-custom p {
+      font-size: 1rem;
       color: #444;
       line-height: 1.6;
-      white-space: normal;
     }
 
-    img {
+    .card-custom img {
       border-radius: 15px;
       width: 100%;
       max-width: 240px;
@@ -145,7 +167,7 @@
       border: 3px solid rgba(70, 130, 180, 0.7);
     }
 
-    a {
+    .card-custom a {
       text-decoration: none;
       color: #fff;
       background: #6495ed;
@@ -156,10 +178,20 @@
       transition: background 0.3s ease;
     }
 
-    a:hover {
+    .card-custom a:hover {
       background: #4169e1;
     }
 
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.7);
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    /* 動畫 */
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -187,6 +219,38 @@
 </head>
 
 <body>
+
+  <!-- 導覽列 -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">怡婷的網站</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="index.html">首頁</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">關於我</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">作品</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="https://sites.google.com/stu.ntue.edu.tw/eating2006">0225</a></li>
+              <li><a class="dropdown-item" href="0304/index.html">0304</a></li>
+              <li><a class="dropdown-item" href="0311/index.html">0311</a></li>
+              <li><a class="dropdown-item" href="0318/index.html">0318</a></li>
+              <li><a class="dropdown-item" href="0325/index.html">0325</a></li>
+              <li><a class="dropdown-item" href="0408/index.html">0408</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="搜尋">
+          <button class="btn btn-outline-primary" type="submit">搜尋</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
   <!-- 星星 -->
   <div class="star" style="top: 80px; left: 50px;"></div>
   <div class="star" style="top: 200px; left: 90%;"></div>
@@ -196,46 +260,73 @@
   <!-- 雲朵 -->
   <div class="cloud cloud1"></div>
 
-  <h1>怡婷的網站</h1>
 
-  <div class="container">
-    <div class="poem-block">
-      <img src="home/圖片1.jpg" alt="我的網站" />
-      <h2>2025/02/25 <br />我的網站</h2>
-      <a href="https://sites.google.com/stu.ntue.edu.tw/eating2006" target="_blank">前往網站</a>
+  <!-- 內容區塊 -->
+  <section class="container-content">
+    <div class="card-custom">
+      <div class="poem-block">
+        <img src="home/圖片1.jpg" alt="我的網站" />
+        <h2>2025/02/25 <br />我的網站</h2>
+        <a href="https://sites.google.com/stu.ntue.edu.tw/eating2006" target="_blank">前往網站</a>
+      </div>
+    </div>
+    
+    <div class="card-custom">
+      <div class="poem-block">
+        <img src="home/圖片2.jpg" alt="這是詐騙" />
+        <h2>2025/03/04 <br />這是詐騙</h2>
+        <a href="0304/index.html" target="_blank">前往作品</a>
+      </div>
     </div>
 
-    <div class="poem-block">
-      <img src="home/圖片2.jpg" alt="這是詐騙" />
-      <h2>2025/03/04 <br />這是詐騙</h2>
-      <a href="0304/index.html" target="_blank">前往作品</a>
+    <div class="card-custom">
+      <div class="poem-block">
+        <img src="home/圖片3.jpg" alt="唐詩賞析" />
+        <h2>2025/03/11 <br />唐詩賞析</h2>
+        <a href="0311/index.html" target="_blank">前往作品</a>
+      </div>
     </div>
 
-    <div class="poem-block">
-      <img src="home/圖片3.jpg" alt="唐詩賞析" />
-      <h2>2025/03/11 <br />唐詩賞析</h2>
-      <a href="0311/index.html" target="_blank">前往作品</a>
+    <div class="card-custom">
+      <div class="poem-block">
+        <img src="home/圖片4.jpg" alt="音樂賞析" />
+        <h2>2025/03/18 <br />音樂賞析</h2>
+        <a href="0318/index.html" target="_blank">前往作品</a>
+      </div>
     </div>
 
-    <div class="poem-block">
-      <img src="home/圖片4.jpg" alt="音樂賞析" />
-      <h2>2025/03/18 <br />音樂賞析</h2>
-      <a href="0318/index.html" target="_blank">前往作品</a>
+    <div class="card-custom">
+      <div class="poem-block">
+        <img src="home/圖片5.jpg" alt="好多唐詩" />
+        <h2>2025/03/25 <br />好多唐詩</h2>
+        <a href="0325/index.html" target="_blank">前往作品</a>
+      </div>
     </div>
 
-    <div class="poem-block">
-      <img src="home/圖片5.jpg" alt="好多唐詩" />
-      <h2>2025/03/25 <br />好多唐詩</h2>
-      <a href="0325/index.html" target="_blank">前往作品</a>
+    <div class="card-custom">
+      <div class="poem-block">
+        <img src="home/圖片6.jpg" alt="Bootstrap元件" />
+        <h2>2025/04/08 <br />Bootstrap元件</h2>
+        <a href="0408/index.html" target="_blank">前往作品</a>
+      </div>
     </div>
 
-    <div class="poem-block">
-      <img src="home/圖片6.jpg" alt="敬請期待" />
-      <h2>2025/04/08 <br />Bootstrap元件</h2>
-      <a href="0408/index.html" target="_blank">前往作品</a>
+    <div class="card-custom">
+      <div class="poem-block">
+        <img src="home/圖片7.jpg" alt="模板製作" />
+        <h2>2025/04/08 <br />模板製作</h2>
+        <a href="0415/templete.html" target="_blank">前往作品</a>
+      </div>
     </div>
-  </div>
+  </section>
 
+
+  <!-- 頁尾 -->
+  <footer>
+    © 2025 怡婷的網站. YI TING'S WEBSITE.
+  </footer>
+
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
