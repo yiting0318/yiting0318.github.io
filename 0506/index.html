@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>我的網站模板</title>
+    <title>怡婷的網站</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -215,39 +215,6 @@
                 transform: translateY(0);
             }
         }
-
-        /* 歌詞 */
-        .lyrics-block {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            background: rgba(255, 255, 255, 0.75);
-            border-radius: 20px;
-            padding: 30px;
-            max-width: 800px;
-            margin: 40px auto;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-            animation: fadeIn 1.2s ease-in;
-        }
-
-        .lyric-line {
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .lyric-line .lyrics {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #3b5998;
-        }
-
-        .lyric-line .translation {
-            font-size: 1rem;
-            color: #555;
-            margin-top: 5px;
-        }
     </style>
 </head>
 
@@ -269,16 +236,15 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item"
                                     href="https://sites.google.com/stu.ntue.edu.tw/eating2006">0225</a></li>
-                                    <li><a class="dropdown-item" href="https://sites.google.com/stu.ntue.edu.tw/eating2006">0225</a></li>
-                                    <li><a class="dropdown-item" href="../0304/index.html">0304</a></li>
-                                    <li><a class="dropdown-item" href="../0311/index.html">0311</a></li>
-                                    <li><a class="dropdown-item" href="../0318/index.html">0318</a></li>
-                                    <li><a class="dropdown-item" href="../0325/index.html">0325</a></li>
-                                    <li><a class="dropdown-item" href="../0408/index.html">0408</a></li>
-                                    <li><a class="dropdown-item" href="../0415/templete.html">0415</a></li>
-                                    <li><a class="dropdown-item" href="../0422/index.html">0422</a></li>
-                                    <li><a class="dropdown-item" href="../0429/index.html">0429</a></li>
-                                    <li><a class="dropdown-item" href="../0506/index.html">0506</a></li>
+                            <li><a class="dropdown-item" href="../0304/index.html">0304</a></li>
+                            <li><a class="dropdown-item" href="../0311/index.html">0311</a></li>
+                            <li><a class="dropdown-item" href="../0318/index.html">0318</a></li>
+                            <li><a class="dropdown-item" href="../0325/index.html">0325</a></li>
+                            <li><a class="dropdown-item" href="../0408/index.html">0408</a></li>
+                            <li><a class="dropdown-item" href="../0415/templete.html">0415</a></li>
+                            <li><a class="dropdown-item" href="../0422/index.html">0422</a></li>
+                            <li><a class="dropdown-item" href="../0429/index.html">0429</a></li>
+                            <li><a class="dropdown-item" href="../0506/index.html">0506</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -301,95 +267,119 @@
 
 
     <!-- 內容區塊 -->
-    <section class="container-content" style="text-align: center;">
-        <div id="mycard">
-            <iframe src="https://www.youtube.com/embed/x-Om0G8Dwis?si=QAwKO_SBCEWVgssM" title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-    </section>
+    <div class="container">
+        <h1 class="text-center">Bootstrap 表單元件</h1>
+        <hr />
+        <h2 class="text-center"> 基礎表單 </h2>
+        <form>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="請輸入電子郵件">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="請輸入電子郵件密碼">
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
 
-    <section class="container-content" style="text-align: center;">
-        <div id="caption">
-            <h1>첫 만남은 계획대로 되지 않아</h1>
-        </div>
-    </section>
+            <hr />
+            <h2 class="text-center"> Margin-Bottom </h2>
+            <div class="mb-4">
+                <label for="formGroupExampleInput" class="form-label">Example label</label>
+                <input type="text" class="form-control" id="formGroupExampleInput"
+                    placeholder="Example input placeholder">
+            </div>
+            <div class="mb-4">
+                <label for="formGroupExampleInput2" class="form-label">Another label</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2"
+                    placeholder="Another input placeholder">
+            </div>
+            <hr />
+            <h2 class="text-center"> 表單排版 </h2>
+            <div class="row">
+                <div class="row g-3">
+                    <div class="col">
+                        <label class="form-label">First name </label>
+                        <input type="text" class="form-control" placeholder="請輸入First name" aria-label="請輸入First name">
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Middle name</label>
+                        <input type="text" class="form-control" placeholder="請輸入Middle name"
+                            aria-label="請輸入Middle name">
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Last name </label>
+                        <input type="text" class="form-control" placeholder="請輸入Last name" aria-label="請輸入Last name">
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <h2 class="text-center"> 下拉式表單 </h2>
+            <div >
+                <label for="inputState" class="form-label">State</label>
+                <select id="inputState" class="form-select">
+                    <option value="1">選項一</option>
+                    <option value="2" selected>選項二</option>
+                    <option value="3">選項三</option>
+                </select>
+            </div>
+            <hr />
+            <h2 class="text-center"> 選擇方塊 </h2>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Default checkbox
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked">
+                    Checked checkbox
+                </label>
+            </div>
+            <hr />
+            <h2 class="text-center"> 選項按鈕 </h2>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Default radio
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Default checked radio
+                </label>
+            </div>
+            <hr />
+            <h2 class="text-center"> 切換開關 </h2>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">可以讓使用者更改的開啟開關</label>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                <label class="form-check-label" for="flexSwitchCheckChecked">可以讓使用者更改的開啟開關</label>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDisabled" disabled>
+                <label class="form-check-label" for="flexSwitchCheckDisabled">不可讓使用者更改的關閉開關</label>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabled"
+                    checked disabled>
+                <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">不可讓使用者更改的開啟開關</label>
+            </div>
+        </form>
 
-    <section class="lyrics-block">
-        <div class="lyric-line">
-            <p class="lyrics">거울 속에 내 표정 봐 봐</p>
-            <p class="translation">看著鏡中自己的表情</p>
-        </div>
-        <div class="lyric-line">
-            <p class="lyrics">느낌 so good 기다려온 d-day</p>
-            <p class="translation">感覺 棒極了 這一日 期待已久</p>
-        </div>
-        <div class="lyric-line">
-            <p class="lyrics">연습했던 손든 인사도 그대로 하면 돼</p>
-            <p class="translation">曾練習過的舉手 問候 只要練習時去做就好</p>
-        </div>
-        <div class="lyric-line">
-            <p class="lyrics">Hairstyle check하고 한 번 turn around</p>
-            <p class="translation">再檢查多幾遍髮型 轉個圈看看</p>
-        </div>
-        <div class="lyric-line">
-            <p class="lyrics">발걸음은 매일 걷던 그 길로</p>
-            <p class="translation">向著那條當初每天都會走過的路</p>
-        </div>
-        <div class="lyric-line">
-            <p class="lyrics">계획은 완벽</p>
-            <p class="translation">計劃 完美無缺</p>
-        </div>
-        <div class="lyric-line">
-            <p class="lyrics">빨리 말 걸어보고 싶어 hey</p>
-            <p class="translation">我想更快些 跟你搭上話 Hey</p>
-        </div>
-        <div class="lyric-line">
-            <p class="lyrics">셋 둘 하나</p>
-            <p class="translation">三 二 一</p>
-        </div>
-        <div class="lyric-line">
-            <p class="lyrics">첫 만남은 너무 어려워</p>
-            <p class="translation">初次見面 真的很不容易</p>
-        </div>
-        <div class="lyric-line">
-            <p class="lyrics">계획대로 되는 게 없어서</p>
-            <p class="translation">完全沒有按照計劃執行</p>
-        </div>
-        <div class="lyric-line">
-            <p class="lyrics">첫 만남은 너무 어려워</p>
-            <p class="translation">初次見面 完全手忙腳亂</p>
-        </div>
-        <div class="lyric-line">
-            <p class="lyrics">내 이름은 말야</p>
-            <p class="translation">我的名字是</p>
-        </div>
-        <div class="lyric-line">
-            <p class="lyrics">Hey</p>
-        </div>
-        <div class="lyric-line">
-            <p class="lyrics">안녕 첫 마디를 건넬 때</p>
-            <p class="translation">你好 當我說出第一句話的時候</p>
-        </div>
-        <div class="lyric-line">
-            <p class="lyrics">주변 소린 canceled</p>
-            <p class="translation">我的四周 瞬間靜音</p>
-        </div>
-        <div class="lyric-line">
-            <p class="lyrics">네 말소리는 playlist</p>
-            <p class="translation">你的聲音 便是播放列表</p>
-        </div>
-        <div class="lyric-line">
-            <p class="lyrics">우리의 사이 beautiful</p>
-            <p class="translation">我們的關係 是那般純粹美好</p>
-        </div>
-        <div class="lyric-line">
-            <p class="lyrics">내일 또 봐 안녕</p>
-            <p class="translation">再會啦 明天見！？</p>
-        </div>
-    </section>
-
+        </form>
+    </div>
 
 
     <!-- 頁尾 -->
