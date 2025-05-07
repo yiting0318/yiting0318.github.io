@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>怡婷的網站</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- 字體 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #fceaff, #d0e8ff, #fce3ec);
+      font-family: 'Noto Sans TC', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* 星星動畫 */
+    .star {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #fff8dc;
+      border-radius: 50%;
+      animation: twinkle 2s infinite ease-in-out;
+      opacity: 0.7;
+      z-index: 1;
+    }
+
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        opacity: 0.5;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.5);
+      }
+    }
+
+    /* 雲動畫 */
+    .cloud {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: floatCloud 60s linear infinite;
+      z-index: 0;
+    }
+
+    .cloud::before,
+    .cloud::after {
+      content: '';
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+    }
+
+    .cloud1 {
+      width: 120px;
+      height: 60px;
+      top: 100px;
+      left: -150px;
+      animation-delay: 0s;
+    }
+
+    .cloud1::before {
+      width: 80px;
+      height: 80px;
+      top: -20px;
+      left: 20px;
+    }
+
+    .cloud1::after {
+      width: 60px;
+      height: 60px;
+      top: 10px;
+      left: 80px;
+    }
+
+    @keyframes floatCloud {
+      0% {
+        left: -200px;
+      }
+
+      100% {
+        left: 110%;
+      }
+    }
+
+    /* 導覽列 */
+    .navbar {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.6) !important;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      color: #5b8fc9 !important;
+    }
+
+    /* 標題 */
+    h1 {
+      font-size: 3rem;
+      color: #5b8fc9;
+      margin: 40px 0 20px;
+      text-align: center;
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    /* 主內容容器 */
+    .container-content {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 1.2s ease-in;
+    }
+
+    .card-custom {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      padding: 25px;
+      border-radius: 20px;
+      border: 2px solid rgba(100, 149, 237, 0.2);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .card-custom:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-custom h2 {
+      font-size: 1.5rem;
+      color: #4682b4;
+      margin-bottom: 15px;
+    }
+
+    .card-custom p {
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .card-custom img {
+      border-radius: 15px;
+      width: 100%;
+      max-width: 240px;
+      margin-bottom: 15px;
+      border: 3px solid rgba(70, 130, 180, 0.7);
+    }
+
+    .card-custom a {
+      text-decoration: none;
+      color: #fff;
+      background: #6495ed;
+      padding: 8px 16px;
+      border-radius: 10px;
+      display: inline-block;
+      margin-top: 10px;
+      transition: background 0.3s ease;
+    }
+
+    .card-custom a:hover {
+      background: #4169e1;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.7);
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    /* 動畫 */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 導覽列 -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">怡婷的網站</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="../index.html">首頁</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">關於我</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">作品</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="https://sites.google.com/stu.ntue.edu.tw/eating2006">0225</a></li>
+              <li><a class="dropdown-item" href="../0304/index.html">0304</a></li>
+              <li><a class="dropdown-item" href="../0311/index.html">0311</a></li>
+              <li><a class="dropdown-item" href="../0318/index.html">0318</a></li>
+              <li><a class="dropdown-item" href="../0325/index.html">0325</a></li>
+              <li><a class="dropdown-item" href="../0408/index.html">0408</a></li>
+              <li><a class="dropdown-item" href="../0415/templete.html">0415</a></li>
+              <li><a class="dropdown-item" href="../0422/index.html">0422</a></li>
+              <li><a class="dropdown-item" href="../0429/index.html">0429</a></li>
+              <li><a class="dropdown-item" href="../0506/index.html">0506</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="搜尋">
+          <button class="btn btn-outline-primary" type="submit">搜尋</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 星星 -->
+  <div class="star" style="top: 80px; left: 50px;"></div>
+  <div class="star" style="top: 200px; left: 90%;"></div>
+  <div class="star" style="top: 40%; left: 60%;"></div>
+  <div class="star" style="top: 65%; left: 20%;"></div>
+
+  <!-- 雲朵 -->
+  <div class="cloud cloud1"></div>
+
+
+  <!-- 內容區塊 -->
+   
+  <h1 class="text-center"> 2025.04.29 更多Bootstrap元件 </h1>
+  <hr>
+
+  <!-- 表格 -->
+<h2 class="text-center"> 表格 </h2>
+<div class="container">
+  <table class="table table-striped table-hover table-bordered align-middle text-center">
+    <thead class="table-primary">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td class="table-danger">John</td>
+        <td>Doe</td>
+        <td>@social</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  <!-- 圖解 -->
+  <div class="container my-5">
+    <h2 class="text-center"> 圖解 </h2>
+    <figure class="figure text-center">
+      <img src="../home/圖片1.jpg" class="img-fluid" width="50%" alt="圖片">
+      <figcaption class="figure-caption">一張可愛的貓貓圖片</figcaption>
+    </figure>
+  </div>
+
+  <!-- 手風琴 -->
+  <div class="container my-5">
+    <h2 class="text-center"> 手風琴 </h2>
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+            aria-expanded="true" aria-controls="collapseOne">
+            手風琴標題1
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>第一個繞口令</strong> <br>
+            粉紅牆上畫鳳凰，鳳凰畫在粉紅牆。
+            紅鳳凰、粉鳳凰，紅粉鳳凰、花鳳凰。
+            紅鳳凰、黃鳳凰，紅粉鳳凰、粉紅鳳凰，花粉花鳳凰。
+            紅鳳凰、粉鳳凰，黃鳳凰、花鳳凰，紅粉鳳凰、粉紅鳳凰。
+            鳳凰花中鳳凰飛，粉紅牆上鳳凰畫。
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            手風琴標題2
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>第二個繞口令</strong> <br>
+            石、斯、施、史四老師
+            天天和我在一起。
+            石老師教我大公無私，
+            斯老師給我精神糧食；
+            施老師叫我遇事三思，
+            史老師送我知識鑰匙。
+            我感謝石、斯、施、史四老師
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            手風琴標題3
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>第三個繞口令</strong> <br>
+            白老八門前栽了八顆白果樹，
+            從北邊飛來了八個白八哥兒不知在哪住。
+            白老八拿了八個巴達棍兒要打八個白八哥兒，
+            八個八哥兒飛上了八顆白果樹，
+            不知道白老八拿這八個巴達棍兒打著了八個白八哥兒，
+            還是打著了八顆白果樹。
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+            手風琴標題4
+          </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>第四個繞口令</strong> <br>
+            劉奶奶找牛奶奶買牛奶，
+            牛奶奶給劉奶奶拿牛奶，
+            劉奶奶說牛奶奶的牛奶不如柳奶奶的牛奶，
+            牛奶奶說柳奶奶的牛奶會流奶，
+            柳奶奶聽見了大罵牛奶奶你的才會流奶，
+            柳奶奶和牛奶奶潑牛奶嚇壞了劉奶奶，
+            大罵再也不買柳奶奶和牛奶奶的牛奶。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 收合 -->
+  <div class="container my-5">
+    <h2 class="text-center"> 收合 </h2>
+    <p class="d-inline-flex gap-1 ">
+      <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+        aria-controls="collapseExample">
+        神奇按鈕1
+      </a>
+      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        aria-expanded="false" aria-controls="collapseExample">
+        神奇按鈕2
+      </button>
+    </p>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        這是一段神奇文字，看到的人都會好運
+      </div>
+    </div>
+  </div>
+
+  <!-- 頁尾 -->
+  <footer>
+    © 2025 怡婷的網站. YI TING'S WEBSITE.
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

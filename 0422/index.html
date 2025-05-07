@@ -1,235 +1,111 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-Hant">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>怡婷的網站</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YI TING'S WEBSITE</title>
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-  <!-- 字體 -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- Google 字體 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
+    :root {
+      --bg-color: #D9E8EC;
+      --card-color: #F1CD9E;
+      --accent-color: #CBA498;
+      --text-color: #444;
+      --hover-color: #B3BCCC;
+    }
+
     body {
-      background: linear-gradient(135deg, #fceaff, #d0e8ff, #fce3ec);
-      font-family: 'Noto Sans TC', sans-serif;
       margin: 0;
-      padding: 0;
-      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
     }
 
-    /* 星星動畫 */
-    .star {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      background: #fff8dc;
-      border-radius: 50%;
-      animation: twinkle 2s infinite ease-in-out;
-      opacity: 0.7;
-      z-index: 1;
-    }
-
-    @keyframes twinkle {
-
-      0%,
-      100% {
-        opacity: 0.5;
-        transform: scale(1);
-      }
-
-      50% {
-        opacity: 1;
-        transform: scale(1.5);
-      }
-    }
-
-    /* 雲動畫 */
-    .cloud {
-      position: absolute;
-      background: #fff;
-      border-radius: 50%;
-      opacity: 0.3;
-      animation: floatCloud 60s linear infinite;
-      z-index: 0;
-    }
-
-    .cloud::before,
-    .cloud::after {
-      content: '';
-      position: absolute;
-      background: #fff;
-      border-radius: 50%;
-    }
-
-    .cloud1 {
-      width: 120px;
-      height: 60px;
-      top: 100px;
-      left: -150px;
-      animation-delay: 0s;
-    }
-
-    .cloud1::before {
-      width: 80px;
-      height: 80px;
-      top: -20px;
-      left: 20px;
-    }
-
-    .cloud1::after {
-      width: 60px;
-      height: 60px;
-      top: 10px;
-      left: 80px;
-    }
-
-    @keyframes floatCloud {
-      0% {
-        left: -200px;
-      }
-
-      100% {
-        left: 110%;
-      }
-    }
-
-    /* 導覽列 */
     .navbar {
-      backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.6) !important;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      background-color: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
     .navbar-brand {
-      font-weight: bold;
-      color: #5b8fc9 !important;
+      color: var(--accent-color);
+      font-weight: 600;
+      font-size: 1.2rem;
     }
 
-    /* 標題 */
-    h1 {
-      font-size: 3rem;
-      color: #5b8fc9;
-      margin: 40px 0 20px;
+    .navbar-nav .nav-link {
+      color: #666;
+      transition: color 0.3s;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: var(--accent-color);
+    }
+
+    .main-title {
       text-align: center;
-      animation: fadeInDown 1s ease-in-out;
-    }
-
-    /* 主內容容器 */
-    .container-content {
-      max-width: 1100px;
-      margin: auto;
-      padding: 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      position: relative;
-      z-index: 2;
-      animation: fadeIn 1.2s ease-in;
-    }
-
-    .card-custom {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      padding: 25px;
-      border-radius: 20px;
-      border: 2px solid rgba(100, 149, 237, 0.2);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-align: center;
-    }
-
-    .card-custom:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-    }
-
-    .card-custom h2 {
-      font-size: 1.5rem;
-      color: #4682b4;
-      margin-bottom: 15px;
-    }
-
-    .card-custom p {
-      font-size: 1rem;
-      color: #444;
-      line-height: 1.6;
-    }
-
-    .card-custom img {
-      border-radius: 15px;
-      width: 100%;
-      max-width: 240px;
-      margin-bottom: 15px;
-      border: 3px solid rgba(70, 130, 180, 0.7);
-    }
-
-    .card-custom a {
-      text-decoration: none;
-      color: #fff;
-      background: #6495ed;
-      padding: 8px 16px;
-      border-radius: 10px;
-      display: inline-block;
-      margin-top: 10px;
-      transition: background 0.3s ease;
-    }
-
-    .card-custom a:hover {
-      background: #4169e1;
+      font-size: 2.5rem;
+      margin: 40px 0 50px;
+      color: var(--accent-color);
+      font-weight: 600;
     }
 
     footer {
-      margin-top: 60px;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.7);
+      background-color: white;
       text-align: center;
+      padding: 24px 10px;
       font-size: 0.9rem;
-      color: #666;
+      color: #777;
+      border-top: 1px solid #eee;
     }
 
-    /* 動畫 */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(15px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .form-section {
+      background-color: var(--bg-color);
+      padding: 4px;
+      padding-left: 60px;
+      padding-right: 60px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
     }
 
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
+    h3 {
+      color: #292828;
+      font-weight: 400;
+    }
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    hr {
+      margin-top: 40px;
+      margin-bottom: 0px;
+    }
+
+    .btn-primary {
+      background-color: var(--accent-color);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--hover-color);
     }
   </style>
 </head>
 
 <body>
-
   <!-- 導覽列 -->
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">怡婷的網站</a>
+      <img src="../home/icon.png" alt="圖標" width="40" />
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="../index.html">首頁</a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html">首頁</a></li>
           <li class="nav-item"><a class="nav-link" href="#">關於我</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">作品</a>
@@ -247,98 +123,90 @@
             </ul>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="搜尋">
-          <button class="btn btn-outline-primary" type="submit">搜尋</button>
-        </form>
       </div>
     </div>
   </nav>
 
-  <!-- 星星 -->
-  <div class="star" style="top: 80px; left: 50px;"></div>
-  <div class="star" style="top: 200px; left: 90%;"></div>
-  <div class="star" style="top: 40%; left: 60%;"></div>
-  <div class="star" style="top: 65%; left: 20%;"></div>
+  <!-- 表單內容 -->
+  <div class="container">
+    <h2 class="main-title">文字&圖片排版</h2>
 
-  <!-- 雲朵 -->
-  <div class="cloud cloud1"></div>
+    <div class="form-section">
+      <div class="container my-5">
+        <h3 class="text-center">不同文字大小</h3>
+        <h2>這是 h2 大小</h2>
+        <h3>這是 h3 大小</h3>
+        <h4>這是 h4 大小</h4>
+        <h5>這是 h5 大小</h5>
+        <h6>這是 h6 大小</h6>
+        <p class="text-truncate">
+          劉奶奶找牛奶奶買牛奶，牛奶奶給劉奶奶拿牛奶，劉奶奶說牛奶奶的牛奶不如柳奶奶的牛奶，牛奶奶說柳奶奶的牛奶會流奶，柳奶奶聽見了大罵牛奶奶你的才會流奶，柳奶奶和牛奶奶潑牛奶嚇壞了劉奶奶，大罵再也不買柳奶奶和牛奶奶的牛奶。
+        </p>
+      </div>
+      <hr />
 
+      <!-- 清單 -->
+      <div class="container my-5">
+        <h3 class="text-center">清單範例</h3>
+        <h4>有序清單：</h4>
+        <ol>
+          <li>這是有序清單項目 1</li>
+          <li>這是有序清單項目 2</li>
+          <li>這是有序清單項目 3</li>
+        </ol>
 
-  <!-- 標題區塊 -->
-<div class="container my-5">
-  <h1 class="text-center">文字&圖片排版</h1>
-  <hr />
-  <h2>這是 h2 標題</h2>
-  <h3>這是 h3 標題</h3>
-  <h4>這是 h4 標題</h4>
-  <h5>這是 h5 標題</h5>
-  <h6>這是 h6 標題</h6>
-  <p class="text-truncate">
-    劉奶奶找牛奶奶買牛奶，牛奶奶給劉奶奶拿牛奶，劉奶奶說牛奶奶的牛奶不如柳奶奶的牛奶，牛奶奶說柳奶奶的牛奶會流奶，柳奶奶聽見了大罵牛奶奶你的才會流奶，柳奶奶和牛奶奶潑牛奶嚇壞了劉奶奶，大罵再也不買柳奶奶和牛奶奶的牛奶。
-  </p>
-</div>
+        <h4>無序清單：</h4>
+        <ul>
+          <li>這是無序清單項目 1</li>
+          <li>這是無序清單項目 2</li>
+          <li>這是無序清單項目 3</li>
+        </ul>
+      </div>
+      <hr />
 
-<!-- 清單 -->
-<div class="container my-5">
-  <h2>清單範例</h2>
-  <hr />
-  <h3>有序清單：</h3>
-  <ol>
-    <li>這是有序清單項目 1</li>
-    <li>這是有序清單項目 2</li>
-    <li>這是有序清單項目 3</li>
-  </ol>
+      <!-- 圖片 -->
+      <div class="container my-5">
+        <h3 class="text-center">圖片排版</h3>
+        <div class="row g-3">
+          <div class="col-6 col-md-4 col-lg-2">
+            <img src="../home/帥哥圖片.jpg" class="img-thumbnail" alt="帥哥圖片">
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <img src="../home/帥哥圖片.jpg" class="img-thumbnail" alt="帥哥圖片">
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <img src="../home/帥哥圖片.jpg" class="img-thumbnail" alt="帥哥圖片">
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <img src="../home/帥哥圖片.jpg" class="img-thumbnail" alt="帥哥圖片">
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <img src="../home/帥哥圖片.jpg" class="img-thumbnail" alt="帥哥圖片">
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <img src="../home/帥哥圖片.jpg" class="img-thumbnail" alt="帥哥圖片">
+          </div>
+        </div>
 
-  <h3>無序清單：</h3>
-  <ul>
-    <li>這是無序清單項目 1</li>
-    <li>這是無序清單項目 2</li>
-    <li>這是無序清單項目 3</li>
-  </ul>
-</div>
+        <div class="text-center my-4">
+          <img src="../home/帥哥圖片.jpg" class="img-fluid" width="50%" alt="中間圖片" />
+        </div>
 
-<!-- 圖片 -->
-<div class="container my-5">
-  <h2>圖片排版</h2>
-  <hr />
-  <div class="row g-3">
-    <div class="col-6 col-md-4 col-lg-2">
-      <img src="../home/帥哥圖片.jpg" class="img-thumbnail" alt="帥哥圖片">
+        <div class="clearfix">
+          <img src="../home/帥哥圖片.jpg" class="img-fluid float-start me-3" width="51%" alt="左邊圖片" />
+          <img src="../home/帥哥圖片.jpg" class="img-fluid float-end ms-3" width="51%" alt="右邊圖片" />
+        </div>
+      </div>
     </div>
-    <div class="col-6 col-md-4 col-lg-2">
-      <img src="../home/帥哥圖片.jpg" class="img-thumbnail" alt="帥哥圖片">
     </div>
-    <div class="col-6 col-md-4 col-lg-2">
-      <img src="../home/帥哥圖片.jpg" class="img-thumbnail" alt="帥哥圖片">
-    </div>
-    <div class="col-6 col-md-4 col-lg-2">
-      <img src="../home/帥哥圖片.jpg" class="img-thumbnail" alt="帥哥圖片">
-    </div>
-    <div class="col-6 col-md-4 col-lg-2">
-      <img src="../home/帥哥圖片.jpg" class="img-thumbnail" alt="帥哥圖片">
-    </div>
-  </div>
 
-  <div class="text-center my-4">
-    <img src="../home/帥哥圖片.jpg" class="img-fluid" width="50%" alt="中間圖片" />
-  </div>
+    <!-- 頁尾 -->
+    <footer>
+      © 2025 怡婷的網站. YI TING'S WEBSITE.
+    </footer>
 
-  <div class="clearfix">
-    <img src="../home/帥哥圖片.jpg" class="img-fluid float-start me-3" width="51%" alt="左邊圖片" />
-    <img src="../home/帥哥圖片.jpg" class="img-fluid float-end ms-3" width="51%" alt="右邊圖片" />
-  </div>
-</div>
-
-
-
-  <!-- 頁尾 -->
-  <footer>
-    © 2025 怡婷的網站. YI TING'S WEBSITE.
-  </footer>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
