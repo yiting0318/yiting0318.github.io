@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>冒險之境 - 遊戲介紹</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet" />
+<style>
+  /* Reset */
+  *, *::before, *::after {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: linear-gradient(135deg, #0a122a, #021128);
+    color: #e0e7ff;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #00d8ff;
+  }
+  /* Header */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 64px;
+    background: rgba(5, 18, 48, 0.85);
+    backdrop-filter: saturate(180%) blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    z-index: 1100;
+  }
+  header .logo {
+    font-weight: 900;
+    font-size: 1.8rem;
+    color: #00e0ff;
+    letter-spacing: 2px;
+    user-select: none;
+  }
+  nav a {
+    margin-left: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  nav a:hover {
+    background: #00b4ff;
+    color: #000c1a;
+  }
+  /* Hero Section */
+  .hero {
+  height: 100vh;
+  background-image: url('https://picsum.photos/id/1033/1920/1080');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+}
+
+.hero h1 {
+  font-size: 5rem;
+  letter-spacing: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px 40px;
+  border-radius: 16px;
+}
+
+  /* Main Content */
+  main {
+    display: flex;
+    min-height: 100vh;
+    background: #0d1646;
+    box-shadow: inset 0 0 80px #000c26;
+  }
+  .left-image-container {
+    position: sticky;
+    top: 64px;
+    width: 45vw;
+    height: calc(100vh - 64px);
+    background-size: cover;
+    background-position: center;
+    border-radius: 24px;
+    margin: 20px 30px 20px 40px;
+    box-shadow: 0 8px 24px rgba(0, 200, 255, 0.45);
+    transition: background-image 0.8s ease-in-out;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 8px #00cfff88);
+  }
+  .right-content {
+    width: 55vw;
+    padding: 60px 60px 80px 40px;
+    overflow-y: visible;
+    position: relative;
+  }
+  .text-section {
+    min-height: 100vh;
+    margin-bottom: 80px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    max-width: 650px;
+  }
+  .text-section.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  h1, h2 {
+    font-weight: 900;
+    margin-bottom: 12px;
+    color: #00e0ff;
+    text-shadow: 0 0 8px #00dfffcc;
+  }
+  h1 {
+    font-size: 3.5rem;
+  }
+  h2 {
+    font-size: 2.4rem;
+    margin-top: 20px;
+  }
+  p {
+    font-size: 1.25rem;
+    color: #c4d9ffcc;
+    margin-bottom: 24px;
+    line-height: 1.65;
+  }
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 24px;
+  }
+  ul li {
+    position: relative;
+    font-weight: 600;
+    font-size: 1.15rem;
+    padding-left: 24px;
+    margin-bottom: 12px;
+    color: #89d4ff;
+  }
+  ul li::before {
+    content: '➤';
+    position: absolute;
+    left: 0;
+    color: #00c0ff;
+  }
+  .btn {
+    display: inline-block;
+    padding: 14px 48px;
+    background: linear-gradient(90deg, #00bfff, #0058ff);
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 120, 255, 0.7);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .btn:hover {
+    background: linear-gradient(90deg, #00ffff, #0046cc);
+    box-shadow: 0 6px 20px #00e0ffaa;
+  }
+  /* 截圖圖片 */
+  .screenshots {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .screenshots img {
+    width: 280px;
+    height: 180px;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0, 220, 255, 0.45);
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  .screenshots img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 30px #00e0ffcc;
+  }
+  /* 其他介紹區塊 */
+  section.extra-section {
+    max-width: 960px;
+    margin: 60px auto 60px auto;
+    padding: 48px 36px;
+    background: #071032cc;
+    border-radius: 20px;
+    box-shadow: 0 0 30px #003566aa;
+  }
+  section.extra-section h2 {
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #00cfff;
+    text-shadow: 0 0 10px #00cfffbb;
+  }
+  section.extra-section p {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #b1c8ffcc;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 24px 0;
+    background: #001a33;
+    color: #0077cc;
+    font-size: 0.9rem;
+    letter-spacing: 0.7px;
+    box-shadow: inset 0 8px 24px #003366bb;
+  }
+  /* RWD */
+  @media (max-width: 1024px) {
+    main {
+      flex-direction: column;
+    }
+    .left-image-container, .right-content {
+      width: 100vw;
+      height: 40vh;
+      margin: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .right-content {
+      padding: 24px 24px 48px 24px;
+    }
+    .text-section {
+      min-height: auto;
+      margin-bottom: 40px;
+    }
+    header {
+      padding: 0 20px;
+    }
+  }
+  @media (max-width: 480px) {
+    .hero h1 {
+      font-size: 3.5rem;
+      letter-spacing: 6px;
+    }
+    nav a {
+      margin-left: 16px;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">冒險之境</div>
+  <nav>
+    <a href="#home">首頁</a>
+    <a href="#gameplay">遊戲特色</a>
+    <a href="#story">遊戲故事</a>
+    <a href="#team">開發團隊</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <h1>冒險之境</h1>
+</section>
+
+<main>
+  <div class="left-image-container" id="leftImage" style="background-image: url('https://picsum.photos/id/1018/800/1200')"></div>
+  <div class="right-content">
+    <div class="text-section active" id="section1">
+      <h1>史詩級冒險</h1>
+      <p>探索神秘的幻想世界，踏上驚險刺激的冒險旅程。你將遇見各式各樣的角色和危機，挑戰你的智慧與勇氣。</p>
+      <ul>
+        <li>開放世界自由探索</li>
+        <li>多樣化任務與挑戰</li>
+        <li>即時戰鬥系統</li>
+      </ul>
+      <a href="#gameplay" class="btn">立即開始</a>
+    </div>
+    <div class="text-section" id="section2">
+      <h1>精緻遊戲畫面</h1>
+      <p>以高品質的3D建模打造，每一個場景和角色都細膩動人。視覺享受與遊戲體驗完美結合。</p>
+      <div class="screenshots">
+        <img src="https://picsum.photos/id/1015/600/400" alt="遊戲截圖1" />
+        <img src="https://picsum.photos/id/1016/600/400" alt="遊戲截圖2" />
+        <img src="https://picsum.photos/id/1019/600/400" alt="遊戲截圖3" />
+      </div>
+    </div>
+    <div class="text-section" id="section3">
+      <h1>動人故事情節</h1>
+      <p>深入角色背景，揭開世界秘密。你的決定將影響故事發展與結局。</p>
+      <ul>
+        <li>多重結局設定</li>
+        <li>深度劇情對話</li>
+        <li>劇情選擇影響走向</li>
+      </ul>
+    </div>
+    <div class="text-section" id="section4">
+      <h1>專業開發團隊</h1>
+      <p>由經驗豐富的遊戲設計師與工程師組成，致力打造最具沉浸感的遊戲體驗。</p>
+      <ul>
+        <li>資深美術設計</li>
+        <li>頂尖程式工程師</li>
+        <li>專業劇本策劃</li>
+      </ul>
+      <a href="#team" class="btn">了解團隊</a>
+    </div>
+  </div>
+</main>
+
+<section class="extra-section" id="team">
+  <h2>關於開發團隊</h2>
+  <p>我們的團隊致力於創造精彩且深刻的遊戲世界，結合技術與創意，帶給玩家前所未有的遊戲體驗。</p>
+</section>
+
+<section class="extra-section" id="reviews">
+  <h2>玩家評價</h2>
+  <p>"這款遊戲畫面細膩，故事感人，是我玩過最棒的冒險遊戲！" - 小明</p>
+  <p>"戰鬥系統流暢刺激，任務多樣，讓我停不下來。" - 小華</p>
+</section>
+
+<footer>
+  &copy; 2025 冒險之境遊戲工作室 All rights reserved.
+</footer>
+
+<script>
+  const sections = [
+    { id: 'section1', img: 'https://picsum.photos/id/1018/800/1200' },
+    { id: 'section2', img: 'https://picsum.photos/id/1015/800/1200' },
+    { id: 'section3', img: 'https://picsum.photos/id/1019/800/1200' },
+    { id: 'section4', img: 'https://picsum.photos/id/1020/800/1200' },
+  ];
+  const leftImage = document.getElementById('leftImage');
+  const textSections = document.querySelectorAll('.text-section');
+
+  window.addEventListener('scroll', () => {
+  let scrollPos = window.scrollY + window.innerHeight / 2;
+
+  textSections.forEach((section, idx) => {
+    const rect = section.getBoundingClientRect();
+    const top = window.scrollY + rect.top;
+    const bottom = top + rect.height;
+
+    if(scrollPos >= top && scrollPos < bottom){
+      if(leftImage.style.backgroundImage !== `url("${sections[idx].img}")`) {
+        leftImage.style.backgroundImage = `url(${sections[idx].img})`;
+      }
+      textSections.forEach(s => s.classList.remove('active'));
+      section.classList.add('active');
+    }
+  });
+});
+
+</script>
+
+</body>
+</html>

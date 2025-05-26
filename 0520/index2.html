@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>遊戲角色介紹網站</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(to right, #fce4ec, #f8bbd0);
+      font-family: 'Noto Sans TC', sans-serif;
+      color: #333;
+    }
+
+    header {
+      background-color: #e91e63;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+
+    .intro {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .intro p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .card-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .flip-card {
+      perspective: 1000px;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .flip-card-front {
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .flip-card-front img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+
+    .flip-card-front h3 {
+      margin-top: 15px;
+    }
+
+    .flip-card-back {
+      background-color: #f06292;
+      color: white;
+      transform: rotateY(180deg);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .flip-card-back button {
+      margin-top: 15px;
+      padding: 8px 16px;
+      background-color: white;
+      color: #e91e63;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: #f8bbd0;
+      text-align: center;
+      padding: 20px;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>幻想冒險團 - 角色介紹</h1>
+  </header>
+
+  <section class="intro">
+    <p>歡迎來到我們的角色介紹網站！這裡介紹每一位遊戲中的夥伴，他們的技能、個性與背景，讓你更認識他們喔 (๑>◡<๑)</p>
+  </section>
+
+  <section class="card-section">
+    <div class="card-container">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="https://placekitten.com/100/100" alt="角色1">
+            <h3>露娜 - 月影刺客</h3>
+          </div>
+          <div class="flip-card-back">
+            擅長潛行與暗殺，來無影去無蹤。
+            <button onclick="alert('露娜的秘密：喜歡吃甜點！')">看更多</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="https://placebear.com/100/100" alt="角色2">
+            <h3>雷克斯 - 戰鬥狂戰士</h3>
+          </div>
+          <div class="flip-card-back">
+            力大無窮的戰士，正義感十足。
+            <button onclick="alert('雷克斯的秘密：怕黑...')">看更多</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="https://placebeard.it/100x100" alt="角色3">
+            <h3>艾拉 - 魔法學者</h3>
+          </div>
+          <div class="flip-card-back">
+            擅長操控元素魔法，是隊伍的智囊。
+            <button onclick="alert('艾拉的秘密：其實是貓耳控 >///<')">看更多</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 幻想冒險團 All rights reserved.
+  </footer>
+</body>
+</html>

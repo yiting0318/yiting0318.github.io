@@ -2,161 +2,544 @@
 <html lang="zh-Hant">
 
 <head>
-  <!-- 頁面編碼與顯示設定 -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YI TING'S WEBSITE</title>
+  <meta charset="UTF-8" /> <!-- 設定字元編碼為 UTF-8，支援中文 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- 響應式視窗設定 -->
+  <title>YI TING'S WEBSITE</title> <!-- 頁面標題 -->
 
-  <!-- SEO搜尋引擎描述與網站小圖示 -->
-  <meta name="description" content="這是一個分享生活、美食與寵物的部落格網站，由怡婷創建。">
-  <link rel="icon" href="../home/favicon.ico" type="image/x-icon" />
+  <!-- Google 字體，使用 Inter 字體 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- Bootstrap 5 CSS 框架 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-  <!-- Google 字體 -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- Bootstrap 5 樣式 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- 自訂 CSS 樣式 -->
   <style>
+    /* CSS 變數定義：方便全站統一管理色彩 */
     :root {
-      /* CSS 變數設定：色彩主題 */
-      --bg-color: #F2F7F9;
-      --card-color: #FFF8F1;
+      --bg-color: #D9E8EC;
+      /* 主背景色，淡藍綠 */
+      --card-color: #F1CD9E;
+      /* 卡片背景色，淡橘色 */
       --accent-color: #CBA498;
-      --accent-hover: #b28e84;
+      /* 強調色，帶點粉橘 */
       --text-color: #444;
+      /* 主要文字色，深灰 */
+      --hover-color: #B3BCCC;
+      /* 滑鼠懸停顏色，淡藍 */
     }
 
     body {
-      /* 整體字型與背景樣式 */
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(to bottom, #fdfcfb, #FFF8F1);
-      color: var(--text-color);
       margin: 0;
-      padding: 0;
+      /* 去除預設外距 */
+      font-family: 'Inter', sans-serif;
+      /* 頁面字體 */
+      background: var(--bg-color);
+      /* 背景色 */
+      color: var(--text-color);
+      /* 文字顏色 */
+      opacity: 0;
+      /* 初始透明，動畫用 */
+      animation: fadeInBody 1.5s ease forwards;
+      /* 漸顯動畫 */
+    }
+
+    /* 定義 body 漸顯動畫 */
+    @keyframes fadeInBody {
+      to {
+        opacity: 1;
+        /* 結束透明度為 1 */
+      }
     }
 
     /* 導覽列樣式 */
     .navbar {
       background-color: white;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      /* 白色底 */
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      /* 輕微陰影，增加層次 */
     }
 
     .navbar-brand {
       color: var(--accent-color);
-      font-weight: 700;
-      font-size: 1.5rem;
+      /* 強調色 */
+      font-weight: 600;
+      /* 半粗體 */
+      font-size: 1.2rem;
+      /* 字體大小 */
     }
 
+    /* 導覽列連結樣式 */
     .navbar-nav .nav-link {
       color: #666;
-      font-weight: 500;
-      transition: color 0.3s ease;
+      /* 預設深灰 */
+      transition: color 0.4s ease;
+      /* 漸變效果 */
     }
 
+    /* 滑鼠懸停時文字變色 */
     .navbar-nav .nav-link:hover {
-      color: var(--accent-color);
-    }
-
-    /* 標題樣式 */
-    .main-title {
-      text-align: center;
-      font-size: 2.5rem;
-      margin: 40px 0;
-      color: var(--accent-color);
-      font-weight: 700;
-    }
-
-    h1, h2, h3 {
-      color: var(--accent-color);
-      font-weight: 600;
-    }
-
-    /* 自訂按鈕樣式 */
-    .btn-primary {
-      background-color: var(--accent-color);
-      border: none;
-      border-radius: 2rem;
-      padding: 8px 24px;
-      font-weight: 500;
-    }
-
-    .btn-primary:hover {
-      background-color: var(--accent-hover);
-      color: #fff;
-    }
-
-    /* 卡片樣式 */
-    .card {
-      background-color: var(--card-color);
-      border-radius: 16px;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-    }
-
-    .card-header {
-      background-color: transparent;
-      border-bottom: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: var(--accent-color);
-    }
-
-    .card-body ul li a {
-      text-decoration: none;
-      color: #333;
-      transition: color 0.2s;
-    }
-
-    .card-body ul li a:hover {
-      color: var(--accent-color);
-    }
-
-    /* 圖片樣式 */
-    .img-fluid {
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    }
-
-    a {
-      color: var(--accent-color);
-    }
-
-    a:hover {
-      color: var(--accent-hover);
-      text-decoration: underline;
+      color: var(--hover-color);
     }
 
     /* 頁尾樣式 */
     footer {
-      background-color: #fff;
+      background-color: white;
+      /* 白底 */
       text-align: center;
+      /* 文字置中 */
       padding: 24px 10px;
+      /* 上下與左右內距 */
       font-size: 0.9rem;
+      /* 字體大小稍小 */
       color: #777;
+      /* 灰色字 */
       border-top: 1px solid #eee;
-      margin-top: 50px;
+      /* 上方細線分隔 */
     }
+
+    /* 首頁封面區域 */
+    .hero-section {
+      background: url(https://truth.bahamut.com.tw/s01/202109/7e1a48c8f5865919a8658094ae6c375b.JPG) center/cover no-repeat fixed;
+      /* 背景圖置中且覆蓋 */
+      height: 100vh;
+      /* 滿螢幕高度 */
+      display: flex;
+      /* 使用彈性盒模型 */
+      justify-content: center;
+      /* 水平置中 */
+      align-items: center;
+      /* 垂直置中 */
+      color: white;
+      /* 文字白色 */
+      font-size: 4rem;
+      /* 大字體 */
+      font-weight: bold;
+      /* 粗體 */
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+      /* 文字陰影，提高可讀性 */
+    }
+
+    /* 遊戲介紹區塊 */
+    .game-intro h4 {
+      padding: 1px 15px;
+      /* 上下內距 60px，左右 15px */
+      text-align: center;
+      /* 文字置中 */
+      font-size: 1.2rem;
+      /* 文字大小 */
+      line-height: 2;
+      /* 行距較寬 */
+      max-width: 800px;
+      /* 最大寬度限制 */
+      margin: 0 auto 100px auto;
+      /* 水平置中，底部外距 100px */
+    }
+
+    .game-intro h3 {
+      color: var(--accent-color);
+      font-weight: 700;
+      font-size: 2rem;
+      padding: 50px;
+      margin-bottom: 1px;
+      text-align: center;
+    }
+
+    /* 國家介紹區 - 使用 Flex 排版 */
+    .scroll-section {
+      display: flex;
+      /* 水平排列 */
+      position: relative;
+      /* 相對定位，方便子元素定位 */
+      min-height: 100vh;
+      /* 最小高度滿螢幕 */
+      max-width: 1200px;
+      /* 最大寬度 */
+      margin: 0 auto 150px auto;
+      /* 置中並有底部外距 */
+      gap: 30px;
+      /* 子元素間距 */
+      padding: 0 20px;
+      /* 左右內距 */
+    }
+
+    /* 國家圖片 - 固定在視窗，滾動時不動 */
+    .scroll-fixed-image {
+      position: sticky;
+      /* 固定定位 */
+      top: 100px;
+      /* 距離視窗頂部100px */
+      width: 50%;
+      /* 寬度佔一半 */
+      height: 500px;
+      /* 固定高度 */
+      object-fit: cover;
+      /* 圖片裁切填滿 */
+      border-radius: 20px;
+      /* 圓角 */
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+      /* 陰影 */
+      transition: opacity 0.5s ease-in-out;
+      /* 透明度變化動畫 */
+    }
+
+    /* 國家文字內容區 */
+    .scroll-content {
+      width: 50%;
+      /* 另一半寬度 */
+      padding: 100px 40px 100px 40px;
+      /* 上右下左內距 */
+      overflow: hidden;
+      /* 隱藏溢出 */
+    }
+
+    /* 每個國家介紹區塊 */
+    .scroll-block {
+      margin-bottom: 300px;
+      /* 下方大間距，方便滾動視覺 */
+      cursor: default;
+      /* 預設滑鼠 */
+      transition: transform 0.3s ease;
+      /* 位移動畫 */
+    }
+
+    /* 滑鼠懸停時往右移動10px */
+    .scroll-block:hover {
+      transform: translateX(10px);
+    }
+
+    /* 國家標題 */
+    .scroll-block h3 {
+      color: var(--accent-color);
+      /* 強調色 */
+      font-weight: 700;
+      /* 粗體 */
+      margin-bottom: 12px;
+      /* 下方間距 */
+      font-size: 1.8rem;
+      /* 字體大小 */
+    }
+
+    /* 國家描述文字 */
+    .scroll-block p {
+      font-size: 1.1rem;
+      /* 字體大小 */
+      line-height: 1.7;
+      /* 行距 */
+      color: #555;
+      /* 深灰文字 */
+    }
+
+    /* 角色介紹區塊 */
+    .form-section {
+      max-width: 1200px;
+      /* 最大寬度 */
+      margin: 0 auto 100px auto;
+      /* 置中且底部間距 */
+      padding: 0 20px;
+      /* 左右內距 */
+    }
+
+    /* 角色介紹標題 */
+    .form-section h3 {
+      color: var(--accent-color);
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    /* 翻轉卡片容器 */
+    .flip-card {
+      background-color: transparent;
+      /* 透明底 */
+      width: 100px;
+      /* 滿寬 */
+      height: 500px;
+      /* 固定高度 */
+      perspective: 1000px;
+      /* 3D 視角距離 */
+    }
+
+    /* 翻轉卡片內部元素 */
+    .flip-card-inner {
+      position: relative;
+      /* 相對定位，方便絕對定位子元素 */
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s ease-in-out;
+      /* 翻轉動畫 */
+      transform-style: preserve-3d;
+      /* 保留 3D 效果 */
+      border-radius: 16px;
+      /* 圓角 */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      /* 陰影 */
+      cursor: pointer;
+      /* 滑鼠為指標 */
+    }
+
+    /* 翻轉時加此類 */
+    .flip-card-inner.flipped {
+      transform: rotateY(180deg);
+      /* Y 軸旋轉 180 度 */
+    }
+
+
+
+    /* 卡片正面 */
+    .flip-card-front {
+      background-color: var(--card-color);
+      /* 卡片底色 */
+      color: var(--text-color);
+      display: flex;
+      /* 使用 flex 置中 */
+      flex-direction: column;
+      /* 直向排列 */
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+    }
+
+    /* 卡片背面 */
+    .flip-card-back {
+      background-color: var(--accent-color);
+      /* 背面底色 */
+      color: white;
+      transform: rotateY(180deg);
+      /* 背面旋轉 180 度，預設不可見 */
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* 角色圖片大小 */
+    .flip-card-front img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    /* 角色名稱 */
+    .flip-card-front h4 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    /* 角色描述 */
+    .flip-card-back p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0 10px;
+    }
+
+    /* 角色介紹區卡片網格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      /* 自適應欄數，最小250px */
+      gap: 30px;
+    }
+
+    /* 小螢幕調整 */
+    @media (max-width: 768px) {
+      .scroll-section {
+        flex-direction: column;
+        /* 改為垂直排列 */
+      }
+
+      .scroll-fixed-image,
+      .scroll-content {
+        width: 100%;
+        /* 滿寬 */
+        height: auto;
+      }
+
+      .scroll-fixed-image {
+        position: relative;
+        top: 0;
+        margin-bottom: 20px;
+      }
+    }
+
+    /* 分類按鈕區 */
+    .filter-buttons {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .filter-btn {
+      background-color: var(--card-color);
+      color: var(--text-color);
+      border: none;
+      padding: 10px 20px;
+      margin: 0 8px 10px 8px;
+      font-size: 1rem;
+      border-radius: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover {
+      background-color: var(--accent-color);
+      color: white;
+      transform: scale(1.1);
+    }
+
+    .filter-btn.active {
+      background-color: var(--hover-color);
+      color: white;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 外層翻轉卡片容器 */
+    .flip-card {
+      background-color: transparent;
+      /* 背景透明 */
+      width: 100%;
+      /* 寬度滿版（由外層欄位控制一排幾個） */
+      height: 400px;
+      /* 卡片高度（可調高讓卡片更大） */
+      perspective: 1000px;
+      /* 設置 3D 視角，值越大越扁平，越小越立體 */
+      cursor: pointer;
+      /* 滑鼠移過去顯示手指游標 */
+      outline: none;
+      /* 移除聚焦輪廓（避免按 Tab 時出現藍框） */
+      user-select: none;
+      /* 禁止選取文字 */
+    }
+
+    /* 內層翻轉框架 */
+    .flip-card-inner {
+      position: relative;
+      /* 父容器定位基準 */
+      width: 100%;
+      /* 滿版寬 */
+      height: 100%;
+      /* 滿版高 */
+      text-align: center;
+      /* 文字置中 */
+      transition: transform 0.6s;
+      /* 翻轉動畫時間（可改快慢） */
+      transform-style: preserve-3d;
+      /* 保留 3D 轉換效果 */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      /* 陰影效果 */
+      border-radius: 12px;
+      /* 圓角（可調整圓潤程度） */
+    }
+
+    /* 當父容器加上 .flipped 時，內層旋轉 180 度 */
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    /* 卡片正面與背面通用樣式 */
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      /* 絕對定位，疊在同一位置 */
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      /* Safari 瀏覽器兼容 */
+      backface-visibility: hidden;
+      /* 隱藏背面內容 */
+      border-radius: 12px;
+      /* 圓角 */
+      display: flex;
+      /* 使用 flex 排版 */
+      justify-content: center;
+      /* 水平置中 */
+      align-items: center;
+      /* 垂直置中 */
+      padding: 15px;
+      /* 內距 */
+      box-sizing: border-box;
+      /* 內距包含在總寬高內 */
+    }
+
+    /* 卡片正面樣式 */
+    .flip-card-front {
+      background-color: #fff;
+      /* 白底 */
+      color: #333;
+      /* 字體顏色深灰 */
+      border: 1px solid #ddd;
+      /* 淡灰邊框 */
+    }
+
+    /* 卡片背面樣式 */
+    .flip-card-back {
+      background-color: #ffffff;;
+      /* 淡灰背景 */
+      color: white;
+      /* 字體白色 */
+      transform: rotateY(180deg);
+      /* 預設背面旋轉 180 度（翻轉後正顯示） */
+      border: 1px solid #DDD;
+      /* 邊框 */
+    }
+
+    .flip-card-back img.card-img {
+      width: 100%;
+      /* 圖片寬度占卡片 80%（可改大如 90%） */
+      height: 100%;
+      /* 圖片高度（可調整） */
+      border-radius: 8px;
+      /* 圓角 */
+      object-fit: cover;
+      /* 圖片裁切填滿容器，保持比例 */
+    }
+
+    /* 卡片正面的圖片樣式 */
+    .flip-card-front img.card-img {
+      width: 90%;
+      /* 圖片寬度占卡片 80%（可改大如 90%） */
+      height: 90%;
+      /* 圖片高度（可調整） */
+      border-radius: 8px;
+      /* 圓角 */
+      object-fit: cover;
+      /* 圖片裁切填滿容器，保持比例 */
+    }
+
+
+
+
+    .active-image {
+      opacity: 1 !important;
+    }
+
+    /*導覽列2*/
   </style>
 </head>
 
 <body>
-  <!-- 導覽列：上方主選單 -->
-  <nav class="navbar navbar-expand-lg">
+  <!-- 導覽列 -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
     <div class="container-fluid">
-      <img src="../home/icon.png" alt="網站圖標" width="40" />
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <a class="navbar-brand" href="../index.html">
+        <img src="../home/icon.png" alt="圖標" width="40" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- 左側 -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <!-- 各個主選單連結 -->
           <li class="nav-item"><a class="nav-link active" href="../index.html">首頁</a></li>
           <li class="nav-item"><a class="nav-link" href="#">關於我</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">作品</a>
             <ul class="dropdown-menu">
-              <!-- 子選單（歷次作品） -->
               <li><a class="dropdown-item" href="https://sites.google.com/stu.ntue.edu.tw/eating2006">0225</a></li>
               <li><a class="dropdown-item" href="../0304/index.html">0304</a></li>
               <li><a class="dropdown-item" href="../0311/index.html">0311</a></li>
@@ -172,126 +555,1606 @@
             </ul>
           </li>
         </ul>
+
+        <!-- 右側 -->
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#hero">首頁</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#gameIntro">遊戲介紹</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#nations">國家介紹</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#characters">角色圖鑑</a>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
 
-  <!-- 主內容容器 -->
-  <div class="container">
-    <!-- 頁首：網站名稱與登入按鈕 -->
-    <header class="py-3 border-bottom">
-      <div class="row">
-        <div class="col-6">
-          <a href="#" class="fs-2 link-dark link-underline-opacity-0">怡婷的部落格</a>
-        </div>
-        <div class="col-6 d-flex justify-content-end align-items-center">
-          <!-- 搜尋圖示與登入 -->
-          <a href="#" class="link-secondary">
-            <!-- SVG 圖示：放大鏡 -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="none" stroke="currentColor"
-              stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
-              viewBox="0 0 24 24">
-              <title>Search</title>
-              <circle cx="10.5" cy="10.5" r="7.5" />
-              <path d="M21 21l-5.2-5.2" />
-            </svg>
-          </a>
-          <a href="#" class="btn btn-outline-secondary">登入</a>
-        </div>
+  <!-- 首頁封面區 -->
+  <section class="hero-section" id="hero">
+    Genshin Impact
+  </section>
+
+  <!-- 遊戲介紹區 -->
+
+  <section class="game-intro" id="gameIntro">
+    <h3>遊戲簡介</h3>
+    <h4>
+      遊戲劇情於虛構世界的提瓦特大陸上展開，該世界分成七個國家，每個國家分別以一種元素為主題，並由對應元素的神明所分管。遊戲劇情的主角為「旅行者」，是一對在無數個世界中旅行的兄妹，因遭遇陌生神明阻攔在提瓦特被迫分離。玩家將扮演旅行者，為了尋找自己失散的唯一血親，並與派蒙一同遊歷七國。
+    </h4>
+
+  </section>
+
+  <!-- 國家介紹區 -->
+  <section class="scroll-section" id="nations">
+    <img src="..\picture\monder.jpg" alt="國家圖片" class="scroll-fixed-image"
+      id="country-image">
+
+    <div class="scroll-content">
+      <div class="scroll-block" data-img="..\picture\monder.jpg">
+        <h3>蒙德</h3>
+        <p>	
+          位於提瓦特大陸東北部的自由城邦。
+          群山和廣袤的平原間，自由之風攜著蒲公英的氣息吹拂過果酒湖，
+          為坐落於湖心島上的蒙德城送去風神巴巴托斯的祝福與恩澤。
+        </p>
       </div>
-    </header>
-
-    <!-- 分類導覽列 -->
-    <div class="py-1 mb-3 border-bottom">
-      <nav class="nav nav-underline justify-content-between">
-        <!-- 各主題分類 -->
-        <a href="#" class="nav-item nav-link link-body-emphasis">美食</a>
-        <a href="#" class="nav-item nav-link link-body-emphasis">影視</a>
-        <a href="#" class="nav-item nav-link link-body-emphasis">旅遊</a>
-        <a href="#" class="nav-item nav-link link-body-emphasis">健康</a>
-        <a href="#" class="nav-item nav-link link-body-emphasis">藝文</a>
-        <a href="#" class="nav-item nav-link link-body-emphasis">親子</a>
-        <a href="#" class="nav-item nav-link link-body-emphasis">家居</a>
-        <a href="#" class="nav-item nav-link link-body-emphasis">美妝</a>
-        <a href="#" class="nav-item nav-link link-body-emphasis">寵物</a>
-        <a href="#" class="nav-item nav-link link-body-emphasis">3C</a>
-      </nav>
-    </div>
-
-    <!-- 介紹區塊 -->
-    <div class="p-5 my-4 rounded text-body-emphasis bg-body-secondary">
-      <h1 class="display-5 fst-italic">記錄一切美好的部落格</h1>
-      <p class="lead my-3">生活對我來說是充滿小挑戰和驚喜的過程，我喜歡在忙碌中找尋屬於自己的放鬆時光。這裡會分享我一些日常的碎片，希望你也能找到屬於你的那份快樂！</p>
-    </div>
-
-    <!-- 主內容 -->
-    <h3>★我喜歡的桌布精選★</h3>
-    <div class="row">
-      <!-- 左邊主要文章 -->
-      <div class="col-md-8">
-        <!-- 第一篇文章 -->
-        <img src="../home/圖1.jpg" class="img-fluid rounded my-2" alt="沙灘上的貓咪">
-        <p>2023年12月 by <a href="#">星野愛</a></p>
-        <p>灰白色的貓咪悠閒地趴在晴朗的沙灘上...</p>
-        <hr>
-        <!-- 第二篇文章 -->
-        <img src="../home/圖2.jpg" class="img-fluid rounded my-2" alt="草地上的博美狗">
-        <p>2023年12月 by <a href="#">阿葵亞</a></p>
-        <p>在廣闊的綠色草地上，一隻迷人的博美狗正奔跑...</p>
-        <hr>
-        <!-- 上下篇按鈕 -->
-        <div class="d-flex justify-content-between my-8">
-          <a href="#" class="btn btn-primary rounded-pill px-4 py-2">上一篇</a>
-          <a href="#" class="btn btn-primary rounded-pill px-4 py-2">下一篇</a>
-        </div>
+      <div class="scroll-block" data-img="..\picture\chinese.jpg">
+        <h3>璃月</h3>
+        <p>位於提瓦特大陸東方的富饒港灣。
+           傲然矗立的山麓與石林、廣袤的平原與生機勃勃的河灘共同構成了璃月的豐富地貌，在四季分明的氣候下煥發出多彩的風華。
+           山石奇景間，又埋藏了多少岩之魔神的古老饋贈等待著人們發掘呢？
+        </p>
       </div>
+      <div class="scroll-block" data-img="..\picture\japan.jpg">
+        <h3>稻妻</h3>
+        <p> 位於提瓦特大陸東方的封閉群島。
+            紫電縱橫、雷霆萬鈞之地，諸島環繞於海洋之中，在孤絕與壓抑的氣氛下，孕育著堅忍與渴望。
+            雷之魔神雷電將軍以「永恆」為名治世，然而在刀光劍影之後，稻妻的人民卻不曾停下對希望與變革的渴求，於雷霆之中覓得生命的答案。</p>
+      </div>
+      <div class="scroll-block" data-img="..\picture\shme.jpg">
+        <h3>須彌</h3>
+        <p>位於提瓦特大陸西部的智慧國度。
+          廣袤的雨林與沙海共存，繁盛的綠意間蘊藏無盡生機，而黃沙之中則埋藏古老文明的碎片。
+          在草之魔神小吉祥草王納西妲的守護下，須彌的學者們以求知為志，穿梭於知識與真理之間，於繁花似錦與古老謎團中探尋世界的奧秘。</p>
+      </div>
+      <div class="scroll-block" data-img="..\picture\fondan.jpg">
+        <h3>楓丹</h3>
+        <p>位於提瓦特大陸東北部的水之國度。
+          湖泊與水道交織出浪漫的律動，水面之下的秘密與奇跡靜靜流淌，倒映著正義與審判的雙面。
+          在水之魔神芙寧娜的庇佑下，楓丹的人民心懷公理，見證無數的審判與故事，於水光瀲灩之中，尋找著理想與真相。</p>
+      </div>
+      <div class="scroll-block" data-img="..\picture\nata.jpg">
+        <h3>納塔</h3>
+        <p>位於提瓦特大陸西南部的烈焰之地。
+            火山與熔岩塑造出這片狂烈之土，炙熱的氣息在大地間翻湧，燃燒著追求榮耀與戰鬥的靈魂。
+            烈火之下，納塔的戰士們以堅定與勇氣為誓，呼喚著火之魔神穆瑞涅的力量，挑戰命運與自我，於熾熱與戰意中不斷前行。</p>
+      </div>
+    </div>
+  </section>
 
-      <!-- 右邊側欄 -->
-      <div class="col-md-3 offset-md-1">
-        <!-- 關於我們 -->
-        <div class="card text-dark bg-light mb-4">
-          <div class="card-header">關於我</div>
-          <div class="card-body">
-            <p class="card-text">嗨嗨！我是王怡婷，目前就讀於國立臺北教育大學，正在努力與作業搏鬥（偶爾也會被作業擊敗）。但我依然會抽空享受生活的小確幸。平時愛玩遊戲、追劇、和朋友聚聚，偶爾也會挑戰一些有趣的手作。</p>
-          </div>
+
+  <!-- 角色介紹區 -->
+  <section class="form-section" id="characters">
+    <h3>角色圖鑑</h3>
+
+    <div class="text-center mb-4">
+      <div class="filter-section">
+        <div class="filter-group">
+          <span>稀有度：</span>
+          <button class="filter-btn star-btn active" data-star="all">全部</button>
+          <button class="filter-btn star-btn" data-star="4">四星</button>
+          <button class="filter-btn star-btn" data-star="5">五星</button>
         </div>
-        <!-- 美食推薦 -->
-        <div class="card text-dark bg-light mb-4">
-          <div class="card-header">遊戲推薦</div>
-          <div class="card-body">
-            <ul class="list-unstyled">
-              <li><a href="https://genshin.hoyoverse.com/pc-launcher/?utm_source=CHT_google_TW_search_GI008-brand&mhy_trace_channel=ga_channel&new=1&gad_source=1&gad_campaignid=21117318637&gbraid=0AAAAABgn-brkyOyjfLgohZxic61ty-1Lq&gclid=CjwKCAjw_pDBBhBMEiwAmY02NkSUWZi3lwBw92hN7dmPyztj5hltblv_a-bS80ygUcB8c-bqGmb_GBoCyS8QAvD_BwE#/GI008">原神</a></li>
-              <li><a href="https://food.movergames.com/">食物語</a></li>
-              <li><a href="https://hsr.hoyoverse.com/zh-tw/home">崩壞:星穹鐵道</a></li>
-              <li><a href="https://tot.tw.hoyoverse.com/tw/zh-tw">未定事件簿</a></li>
-              <li><a href="https://evol.papegames.cn/home">戀與製作人</a></li>
-              <li><a href="https://zenless.hoyoverse.com/zh-tw/">絕區零</a></li>
-              <li><a href="https://www.minecraft.net/zh-hant">Minecraft</a></li>
-            </ul>
-          </div>
-        </div>
-        <!-- 廣告連結 -->
-        <div class="card text-dark bg-light mb-4">
-          <div class="card-header">廣告連結</div>
-          <div class="card-body">
-            <ul class="list-unstyled">
-              <li><a href="https://www.nintendo.com/us/gaming-systems/switch-2/?srsltid=AfmBOopEaZQ4LWllAEkdfx8V3amVIhDCCMNWmpV2KWWQZbtrpUlv3IiY">Swich2 即將上市</a></li>
-              <li><a href="https://online808.com/">包你發娛樂城</a></li>
-              <li><a href="https://www.playstation.com/zh-hant-tw/ps-vr2/?smcid=store%3Azh-hant-tw%3Apages-latest%3Aprimary%20nav%3Amsg-ps5%3Aps-vr2">PlayStationAR2 現正熱賣中</a></li>
-            </ul>
-          </div>
+
+        <div class="filter-group">
+          <span>元素属性：</span>
+          <button class="filter-btn element-btn active" data-element="all">全部</button>
+          <button class="filter-btn element-btn" data-element="1">火元素</button>
+          <button class="filter-btn element-btn" data-element="2">水元素</button>
+          <button class="filter-btn element-btn" data-element="3">風元素</button>
+          <button class="filter-btn element-btn" data-element="4">雷元素</button>
+          <button class="filter-btn element-btn" data-element="5">草元素</button>
+          <button class="filter-btn element-btn" data-element="6">冰元素</button>
+          <button class="filter-btn element-btn" data-element="7">岩元素</button>
         </div>
       </div>
     </div>
-  </div>
+
+    <div class="row g-4">
+
+      <div class="col-md-3 character-card" data-star="4" data-element="3">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/04/30/55202fe458d12c0c2a3f4464d69660db_1494361710407814010.png?x-oss-process=image%2Fformat%2Cwebp" alt="伊法" class="card-img">
+              <h5 class="mt-2">伊法</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/04/30/d1211b87e0660057dfd5025bea1d5fce_7103335872702845623.gif" alt="伊法" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="6">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/04/30/2a832c067917d806a00da8f3bcf8f82d_8674237467634356840.png?x-oss-process=image%2Fformat%2Cwebp" alt="愛可菲" class="card-img">
+              <h5 class="mt-2">愛可菲</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/04/30/984c1a64c6e4792637d0d32a1133bbcf_2524753676901619507.gif" alt="愛可菲" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="4">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/03/26/142453215/92b1fd7ea1fa4b68f9a9a5b51baa0d7d_5612443825873159164.png?x-oss-process=image%2Fformat%2Cwebp" alt="伊安珊" class="card-img">
+              <h5 class="mt-2">伊安珊</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/03/25/b14935198cf6a69e965d466404a22d72_8657307111672079310.gif" alt="伊安珊" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="4">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/03/25/2cbcf405e74375b789baa7c2c0c06bd1_3144259731948803994.png?x-oss-process=image%2Fformat%2Cwebp" alt="瓦雷莎" class="card-img">
+              <h5 class="mt-2">瓦雷莎</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/03/25/4518ee95af195b26c06816b1ea70558b_1473211384670039105.gif" alt="瓦雷莎" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="3">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/02/08/5f834f2d2f59353d326b5e9b0cfa8a62_4851369671043769453.png?x-oss-process=image%2Fformat%2Cwebp" alt="夢見月瑞希" class="card-img">
+              <h5 class="mt-2">夢見月瑞希</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/02/14/142453215/56daf1fc4d1c7a95e745f3d0b5c4784b_3438683091756629683.gif" alt="夢見月瑞希" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="3">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/01/17/9ef5fbaa2a8cc87eeefba6699705b272_114518928269252871.png?x-oss-process=image%2Fformat%2Cwebp" alt="藍硯" class="card-img">
+              <h5 class="mt-2">藍硯</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/02/14/142453215/42472982297d819168e4236e1b89f1df_2969542667002537706.gif" alt="藍硯" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="6">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/01/13/142453215/9f0124bebef3fec2fb28c457f3ff10d3_1409312227324292800.png?x-oss-process=image%2Fformat%2Cwebp" alt="茜特菈莉" class="card-img">
+              <h5 class="mt-2">茜特菈莉</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/02/14/142453215/ec5b1a6ccff2bae4bb2264850043f6a7_8349461954953389985.gif" alt="茜特菈莉" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="1">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/12/30/8c49e203b2126b3a821ea0231345ec98_3091022826680350135.png?x-oss-process=image%2Fformat%2Cwebp" alt="瑪薇卡" class="card-img">
+              <h5 class="mt-2">瑪薇卡</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/02/14/142453215/3f2df09be186a74dd54882bf47ae1841_8552413136750517743.gif" alt="瑪薇卡" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="3">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/11/18/d363eee714bf84d61fb4822b75bd6e04_2676492841800370007.png?x-oss-process=image%2Fformat%2Cwebp" alt="恰斯卡" class="card-img">
+              <h5 class="mt-2">恰斯卡</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/02/14/142453215/52d53387002ab9c76b71831f5398a173_3451539574461309421.gif" alt="恰斯卡" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="4">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/11/18/2aaf5609d6e105b58883480603332c29_8444797283733535126.png?x-oss-process=image%2Fformat%2Cwebp" alt="歐洛倫" class="card-img">
+              <h5 class="mt-2">歐洛倫</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/02/14/142453215/48ee49ebe3aa2fbf725cbeb33807893d_332246897089664634.gif" alt="歐洛倫" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="2">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/26/cabadce3bb2274a4a2ab60eca8640ae4_6040487253680456464.png?x-oss-process=image%2Fformat%2Cwebp" alt="瑪拉妮" class="card-img">
+              <h5 class="mt-2">瑪拉妮</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/26/0eb153d90867afd5f4bd6c546972fc21_3802082275214662416.gif" alt="瑪拉妮" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="7">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/43500f5479cb96a62b3fa530e6fdd784_7221959347668369250.png?x-oss-process=image%2Fformat%2Cwebp" alt="卡齊娜" class="card-img">
+              <h5 class="mt-2">卡齊娜</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/26/036019b313df44c7cb193fcbfef43507_668111859907779246.gif" alt="卡齊娜" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="7">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/09/25/d6b244ef6ec3df3bd36e51067d450f17_4308094211599377757.png?x-oss-process=image%2Fformat%2Cwebp" alt="希諾寧" class="card-img">
+              <h5 class="mt-2">希諾寧</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/10/04/fb02cf6c6cd80b5430a6910d14db6b70_4961159599260669262.gif" alt="希諾寧" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="5">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/09/12/59b68bd99f0ded103af4c8c4098cca23_6304019452837594890.png?x-oss-process=image%2Fformat%2Cwebp" alt="基尼奇" class="card-img">
+              <h5 class="mt-2">基尼奇</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/09/13/142453215/7dcc645458165a3858140cb4bddbc55d_275536388980561041.gif" alt="基尼奇" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="5">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/07/31/d0cc096be325f9734d86d63f5ac7d218_1021429620279373890.png?x-oss-process=image%2Fformat%2Cwebp" alt="艾梅莉埃" class="card-img">
+              <h5 class="mt-2">艾梅莉埃</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/07/31/142453215/e44a946a41be911c77a2b2b0040fa28d_8297239789306919702.gif" alt="艾梅莉埃" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="4">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/06/05/142453215/c9b2a2c06fa3f9fee19bd52f66ef4802_7063267561595216421.png?x-oss-process=image%2Fformat%2Cwebp" alt="賽索斯" class="card-img">
+              <h5 class="mt-2">賽索斯</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/06/07/142453215/ab36deca395351a456e9462506b01d53_8047044483566329250.gif" alt="賽索斯" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="2">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/06/25/157749474/d8f2091db2fbdb564d066e9595e2bd83_4218759477987275173.png?x-oss-process=image%2Fformat%2Cwebp" alt="希格雯" class="card-img">
+              <h5 class="mt-2">希格雯</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/07/01/125391187/da088006f5f649a1b11640d41555ce16_3325099640023304897.gif" alt="希格雯" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="4">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/06/05/142453215/a850a2c6fcd9b1468760e556f2e6d706_6511376641032797850.png?x-oss-process=image%2Fformat%2Cwebp" alt="克洛琳德" class="card-img">
+              <h5 class="mt-2">克洛琳德</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/06/07/142453215/6aa0f6d4ddc47c83fedbfdcf1c528db2_2161164821294862179.gif" alt="克洛琳德" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="1">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/23/142229365/505d703495f94ef9138e025384bbb5d7_2033582390901680041.png?x-oss-process=image%2Fformat%2Cwebp" alt="阿蕾奇諾" class="card-img">
+              <h5 class="mt-2">阿蕾奇諾</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/07/01/125391187/2ab72b0e0036fc4b2868a0ec92afd300_2254511057854178038.gif" alt="阿蕾奇諾" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="7">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/03/12/142229365/2760dd6c9638da46586032f7b4dc0ef8_2971061996649085250.png?x-oss-process=image%2Fformat%2Cwebp" alt="千織" class="card-img">
+              <h5 class="mt-2">千織</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/07/01/125391187/b398661b2aa370d3cdbd64ae141f3568_5840432685299392858.gif" alt="瑪千織" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="1">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/01/30/b01111171d5a69e5222afd53f0bbe6aa_7424044636498506854.png?x-oss-process=image%2Fformat%2Cwebp" alt="嘉明" class="card-img">
+              <h5 class="mt-2">嘉明</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/07/01/125391187/89514088caad9c3e4fbd63c2cfd265ec_6507192853810053193.gif" alt="嘉明" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="3">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/01/30/f64a1eee5f0160caf1a78eb8c0bcdef3_5109193941752351735.png?x-oss-process=image%2Fformat%2Cwebp" alt="閒雲" class="card-img">
+              <h5 class="mt-2">閒雲</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/07/01/125391187/e7070b43a27dc39d3d85938b5f036b67_7355127346797720855.gif" alt="閒雲" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="1">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/01/08/125391187/5a564896b35114da6dbcd3699e1c2921_6945745756250756200.png?x-oss-process=image%2Fformat%2Cwebp" alt="夏沃蕾" class="card-img">
+              <h5 class="mt-2">夏沃蕾</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/01/09/125391187/da19338af23015010d85ecc4862c78e0_7302385616617503448.gif" alt="夏沃蕾" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="7">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/20/142229365/bab863435d90316289c1769eed121cca_2006214239236787461.png?x-oss-process=image%2Fformat%2Cwebp" alt="娜維婭" class="card-img">
+              <h5 class="mt-2">娜維婭</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/20/142229365/9e231776859ce1d5afd1aa902c144f45_2006886403381961396.gif" alt="娜維婭" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="6">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/11/08/125391187/45c552941667ceea4fabe74013738690_1237007444954139115.png?x-oss-process=image%2Fformat%2Cwebp" alt="夏洛蒂" class="card-img">
+              <h5 class="mt-2">夏洛蒂</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/11/08/125391187/eeec01af2a374215cd65e106d9997889_1113136708995886697.gif" alt="夏洛蒂" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="1">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/15/7998136/d2b9dcd2957d2b1a479ffbf9a2146960_871825843592756050.png?x-oss-process=image%2Fformat%2Cwebp" alt="林尼" class="card-img">
+              <h5 class="mt-2">林尼</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/09/02/7998136/e1081d4ff018a6b94cdd1be093148e9a_470636999406508161.gif" alt="林尼" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="2">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/11/07/133389800/21e181e0f362d130d01e212c5bb53b82_8188807761039792701.png?x-oss-process=image%2Fformat%2Cwebp" alt="芙寧娜" class="card-img">
+              <h5 class="mt-2">芙寧娜</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/11/08/133389800/1bcce0e25d1668ebb178b4dc5c3f6b34_4012022590505667326.gif" alt="芙寧娜" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="2">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/09/27/327628065/6ece63f5f6805280554d805e9ccaf9a8_2490258346826242402.png?x-oss-process=image%2Fformat%2Cwebp" alt="那維萊特" class="card-img">
+              <h5 class="mt-2">那維萊特</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/09/27/125391187/076a8a5e15ace52b76cf7113c186f6bb_5301755521433647408.gif" alt="那維萊特" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="6">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/10/16/133389800/3fdf34f1b64ddfbd70fe9cf306cbc92d_4725534332358240978.png?x-oss-process=image%2Fformat%2Cwebp" alt="萊歐斯利" class="card-img">
+              <h5 class="mt-2">萊歐斯利</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/10/25/133389800/6186ce2180a5c8de7d8e79d2ecd37ab2_7442910203863510654.gif" alt="萊歐斯利" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="6">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/09/04/133389800/3bbf849df340372fb83ff1f4a9583d0a_5872265338926825730.png?x-oss-process=image%2Fformat%2Cwebp" alt="菲米尼" class="card-img">
+              <h5 class="mt-2">菲米尼</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/09/11/7998136/6f51774c3fa0c769637ba6a011391d81_9132854550305025980.gif" alt="菲米尼" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="3">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/15/7998136/dd6c06caae12cc7c52f08222eaf6c4f2_8849733715173409246.png?x-oss-process=image%2Fformat%2Cwebp" alt="琳妮特" class="card-img">
+              <h5 class="mt-2">琳妮特</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/22/7998136/62d27a57d1fbab3960c6a8cedbb339e9_3276160793343366844.gif" alt="琳妮特" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="5">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/23/7998136/05015541c4d22079c8415938c9cbbe51_4613511456746125274.png?x-oss-process=image%2Fformat%2Cwebp" alt="綺良良" class="card-img">
+              <h5 class="mt-2">綺良良</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/23/7998136/05015541c4d22079c8415938c9cbbe51_4613511456746125274.png?x-oss-process=image%2Fformat%2Cwebp" alt="綺良良" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="5">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/01/7998136/0a29bc885777e12ff3db57de89034281_3854657829306094766.png?x-oss-process=image%2Fformat%2Cwebp" alt="白朮" class="card-img">
+              <h5 class="mt-2">白朮</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/06/7998136/0f5babc8e35bb209087618192371ca1c_1351209067500065754.gif" alt="白朮" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="5">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/02/7998136/8706d0f6385f31a35b94a761d4a7a627_5405917874256206236.png?x-oss-process=image%2Fformat%2Cwebp" alt="卡維" class="card-img">
+              <h5 class="mt-2">卡維</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/06/7998136/84a712f1ba3b637e00cec8ef60d3505d_3523687378941812045.gif" alt="卡維" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="1">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/02/27/7998136/dbba9ee7329ca34cc3a5e0449cc4c4c0_7007813642297723391.png?x-oss-process=image%2Fformat%2Cwebp" alt="迪希雅" class="card-img">
+              <h5 class="mt-2">迪希雅</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/03/02/7998136/c5bbba9d554b42bc49c8d017a3ade92e_855898579925534046.gif" alt="迪希雅" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="6">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/03/21/7998136/c23402e9898c07b79495d181deca4c13_8305494122272198045.png?x-oss-process=image%2Fformat%2Cwebp" alt="米卡" class="card-img">
+              <h5 class="mt-2">米卡</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/03/21/7998136/7337d254b607e466eba65aad5be360bc_4058295866938735590.gif" alt="米卡" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="5">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/01/12/7998136/263c92ac7b067f2bbe5498291ff1827c_8271832340161342772.png?x-oss-process=image%2Fformat%2Cwebp" alt="艾爾海森" class="card-img">
+              <h5 class="mt-2">艾爾海森</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/01/17/7998136/d6b81ddb7b5cb0652ec778d3d7f01eca_7917978276890864099.gif" alt="艾爾海森" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="5">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/01/18/7998136/c178874ca89b6da072c6e7e7908d12f2_7383916998212570183.png?x-oss-process=image%2Fformat%2Cwebp" alt="瑤瑤" class="card-img">
+              <h5 class="mt-2">瑤瑤</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/01/18/7998136/1b6fcccdaea1220b10712d037dabe1b0_5600480162921902583.gif" alt="瑤瑤" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="3">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/12/06/7998136/12542bc6cf68564e0327323e42658815_509685617560597410.png?x-oss-process=image%2Fformat%2Cwebp" alt="流浪者" class="card-img">
+              <h5 class="mt-2">流浪者</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/12/07/7998136/504af83a5146565ddce5c5fdfa3087ed_2199750876082325025.gif" alt="流浪者" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="3">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/12/06/7998136/68f891b9f68ab114977e00200efb9e59_8772223918689195942.png?x-oss-process=image%2Fformat%2Cwebp" alt="琺露珊" class="card-img">
+              <h5 class="mt-2">琺露珊</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/12/08/7998136/4b42908b8a897d5b4df5d6793ae7dae6_6035348142977907369.gif" alt="琺露珊" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="6">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/11/14/7998136/d78c64527941436b02a89131c5da9607_7651585440105254998.png?x-oss-process=image%2Fformat%2Cwebp" alt="萊依拉" class="card-img">
+              <h5 class="mt-2">萊依拉</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/11/15/7998136/245cac6b159fdd3c4033ab4100a8c8bc_4992519690368563033.gif" alt="萊依拉" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-3 character-card" data-star="5" data-element="5">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/11/02/7998136/6e1e5196da96bd65e549abe7fa861915_7771197468753330068.png?x-oss-process=image%2Fformat%2Cwebp" alt="納西妲" class="card-img">
+              <h5 class="mt-2">納西妲</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/11/02/7998136/901ccc58d2a1e5a2000ce6c7f192fd9f_7845785817700586245.gif" alt="納西妲" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-3 character-card" data-star="4" data-element="2">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/09/28/7998136/776ac3df01b790ef95a4c1b0384e828b_1762736123038132287.png?x-oss-process=image%2Fformat%2Cwebp" alt="坎蒂絲" class="card-img">
+              <h5 class="mt-2">坎蒂絲</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/09/28/7998136/b14dc218056084e2a45195533dad8a42_9033655078171208570.gif" alt="坎蒂絲" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-3 character-card" data-star="5" data-element="4">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/09/26/7998136/cb608014e47da4a071ab22cb11c76627_3415709892120521278.png?x-oss-process=image%2Fformat%2Cwebp" alt="賽諾" class="card-img">
+              <h5 class="mt-2">賽諾</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/09/26/7998136/55e46d9ed5c4ab94a7fdc85ae0751cb0_3492432117312978702.gif" alt="賽諾" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-3 character-card" data-star="5" data-element="2">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/10/12/7998136/8bd1a35ff8d58654a3f9d727d081cdb9_2210593040371514158.png?x-oss-process=image%2Fformat%2Cwebp" alt="妮露" class="card-img">
+              <h5 class="mt-2">妮露</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/10/12/7998136/44c40ca5e4fde41c7b021627f7bcb9b1_7055785383678684140.gif" alt="妮露" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-3 character-card" data-star="4" data-element="4">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/09/09/7998136/b4829d47e969136c6687890def3c629a_657907484620338617.png?x-oss-process=image%2Fformat%2Cwebp" alt="多莉" class="card-img">
+              <h5 class="mt-2">多莉</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/09/24/7998136/bcf7603076390f222263f0bec7130c26_1805024403466859687.gif" alt="多莉" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-3 character-card" data-star="4" data-element="5">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/08/24/7998136/4044ca9dcb140f6729753d43024c8b54_5577655604593196342.png?x-oss-process=image%2Fformat%2Cwebp" alt="柯萊" class="card-img">
+              <h5 class="mt-2">柯萊</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/09/24/7998136/8e82f3db3573a4835dc181b13c72b272_3488938106403807933.gif" alt="柯萊" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-3 character-card" data-star="5" data-element="5">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/08/24/7998136/58942db439a058f4611f27d8193f681b_792270364155885079.png?x-oss-process=image%2Fformat%2Cwebp" alt="提納里" class="card-img">
+              <h5 class="mt-2">提納里</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/09/24/7998136/d435eaf47600414c82a4e7182fb0b414_9049681176072695573.gif" alt="提納里" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-3 character-card" data-star="4" data-element="3">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E9%25B9%25BF%25E9%2587%258E%25E9%2599%25A2%25E5%25B9%25B3%25E8%2597%258F/avatar.png" alt="鹿野院平藏" class="card-img">
+              <h5 class="mt-2">鹿野院平藏</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/3f6c59001c201dad79704756011fa3f5_1897057047723361601.gif" alt="鹿野院平藏" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-3 character-card" data-star="4" data-element="4">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E4%25B9%2585%25E5%25B2%2590%25E5%25BF%258D/avatar.png" alt="久岐忍" class="card-img">
+              <h5 class="mt-2">久岐忍</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/d1c83d5a8984a781e7c49e5c592c23cf_5160209385970565178.gif" alt="久岐忍" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-3 character-card" data-star="5" data-element="2">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E5%25A4%259C%25E5%2585%25B0/avatar.png" alt="夜蘭" class="card-img">
+              <h5 class="mt-2">夜蘭</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/f5a882ce0e420d5381fcc3df650f262c_4190673471762724938.gif" alt="夜蘭" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-3 character-card" data-star="5" data-element="3">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E9%25AD%2588/avatar.png" alt="魈" class="card-img">
+              <h5 class="mt-2">魈</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/160c19cb9ecfd9ccea6d55e89eb8e2db_6130454533231701396.gif" alt="魈" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-3 character-card" data-star="4" data-element="1">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E9%25A6%2599%25E8%258F%25B1/avatar.png" alt="香菱" class="card-img">
+              <h5 class="mt-2">香菱</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/71a9c01c3b6f9e60c39bd3d8f8a7e003_8622548594359475181.gif" alt="香菱" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-3 character-card" data-star="5" data-element="4">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E9%259B%25B7%25E7%2594%25B5%25E5%25B0%2586%25E5%2586%259B/avatar.png" alt="雷電將軍" class="card-img">
+              <h5 class="mt-2">雷電將軍</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/970f4115920c5b352a1408ca103e5ac4_6284447633823425184.gif" alt="雷電將軍" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-3 character-card" data-star="4" data-element="4">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E9%259B%25B7%25E6%25B3%25BD/avatar.png" alt="雷澤" class="card-img">
+              <h5 class="mt-2">雷澤</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/0f5d0a69fce50f302013dc12a2811027_7467513340542064236.gif" alt="雷澤" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-3 character-card" data-star="5" data-element="7">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E9%2598%25BF%25E8%25B4%259D%25E5%25A4%259A/avatar.png" alt="阿貝多" class="card-img">
+              <h5 class="mt-2">阿貝多</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/28/7998136/18db08d0feaac64fc2056e349ea32ca1_2172457953789998099.gif" alt="阿貝多" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-3 character-card" data-star="5" data-element="7">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E9%2592%259F%25E7%25A6%25BB/avatar.png" alt="鍾離" class="card-img">
+              <h5 class="mt-2">鍾離</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/58e30489f3741f05acb0bf0d74089e88_7718337789111058520.gif" alt="鍾離" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-3 character-card" data-star="4" data-element="6">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E9%2587%258D%25E4%25BA%2591/avatar.png" alt="重雲" class="card-img">
+              <h5 class="mt-2">重雲</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/677437de6fe3b6dacb044f49fcfaf332_4251609314773221941.gif" alt="重雲" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-3 character-card" data-star="4" data-element="6">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E8%25BF%25AA%25E5%25A5%25A5%25E5%25A8%259C/avatar.png" alt="迪奧娜" class="card-img">
+              <h5 class="mt-2">迪奧娜</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/23c4a1af451d690092cd662c4a86d30c_2363197658666904618.gif" alt="迪奧娜" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-3 character-card" data-star="5" data-element="1">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E8%25BF%25AA%25E5%258D%25A2%25E5%2585%258B/avatar.png" alt="迪盧克" class="card-img">
+              <h5 class="mt-2">迪盧克</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/484b32401141e993f2d288ba4a2517c6_8245815998412065620.gif" alt="迪盧克" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-3 character-card" data-star="5" data-element="2">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E8%25BE%25BE%25E8%25BE%25BE%25E5%2588%25A9%25E4%25BA%259A/avatar.png" alt="達達利亞" class="card-img">
+              <h5 class="mt-2">達達利亞</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/d48b00757df35d408043030764fe6ccf_7993659369404108195.gif" alt="達達利亞" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-3 character-card" data-star="4" data-element="1">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E8%25BE%259B%25E7%2584%25B1/avatar.png" alt="辛焱" class="card-img">
+              <h5 class="mt-2">辛焱</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/53a727e6706f822c546b0f610b4565eb_5471482484551734106.gif" alt="辛焱" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="7">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E8%25AF%25BA%25E8%2589%25BE%25E5%25B0%2594/avatar.png" alt="諾艾爾" class="card-img">
+              <h5 class="mt-2">諾艾爾</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/5bc82ae62fe23bccb1d88a509b22d1fa_7529245754259662574.gif" alt="諾艾爾" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="2">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E8%25A1%258C%25E7%25A7%258B/avatar.png" alt="行秋" class="card-img">
+              <h5 class="mt-2">行秋</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/d6b1d7719a00ec7fb61c911659d82a94_3261553345056814894.gif" alt="行秋" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="4">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E8%258F%25B2%25E8%25B0%25A2%25E5%25B0%2594/avatar.png" alt="菲謝爾" class="card-img">
+              <h5 class="mt-2">菲謝爾</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/c8b0c1a5db1e8a9f9ddc698fdf5ea92f_631546330719117285.gif" alt="菲謝爾" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="2">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E8%258E%25AB%25E5%25A8%259C/avatar.png" alt="莫娜" class="card-img">
+              <h5 class="mt-2">莫娜</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/cec3bfee6ce5d698d4d498ab7e5e2cf0_7628970003409830480.gif" alt="莫娜" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="7">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E8%258D%2592%25E6%25B3%25B7%25E4%25B8%2580%25E6%2596%2597/avatar.png" alt="荒瀧一斗" class="card-img">
+              <h5 class="mt-2">荒瀧一斗</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/28/7998136/2669292a03f996c27674268c72fd2a76_3334059614872121896.gif" alt="荒瀧一斗" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="2">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E8%258A%25AD%25E8%258A%25AD%25E6%258B%2589/avatar.png" alt="芭芭拉" class="card-img">
+              <h5 class="mt-2">芭芭拉</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/c9dcabb0e2d3187884438e88fe185444_6134789335863769100.gif" alt="芭芭拉" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="1">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E8%2583%25A1%25E6%25A1%2583/avatar.png" alt="胡桃" class="card-img">
+              <h5 class="mt-2">胡桃</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/e86a5d128d492c40abf08339937c0159_7550174233989973783.gif" alt="胡桃" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="6">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E7%25BD%2597%25E8%258E%258E%25E8%258E%2589%25E4%25BA%259A/avatar.png" alt="蘿莎莉亞" class="card-img">
+              <h5 class="mt-2">蘿莎莉亞</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/d45fe6630a126fbd890916550fc83480_127671258313420474.gif" alt="蘿莎莉亞" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="6">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E7%25A5%259E%25E9%2587%258C%25E7%25BB%25AB%25E5%258D%258E/avatar.png" alt="神里綾華" class="card-img">
+              <h5 class="mt-2">神里綾華</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2023/02/06/7998136/74bf77ea19d2ff44a3a4b264a5929d0e_7562646524917403313.gif" alt="神里綾華" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="2">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E7%25A5%259E%25E9%2587%258C%25E7%25BB%25AB%25E4%25BA%25BA/avatar.png" alt="神里綾人" class="card-img">
+              <h5 class="mt-2">神里綾人</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/29b179efee9109af24869cf0ff6e8eb0_6813555257529310172.gif" alt="神里綾人" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="3">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E7%25A0%2582%25E7%25B3%2596/avatar.png" alt="砂糖" class="card-img">
+              <h5 class="mt-2">砂糖</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/2d1f073d95d3544fbbfe18a59f4b63b3_4146770519101712474.gif" alt="砂糖" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="6">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E7%2594%25B3%25E9%25B9%25A4/avatar.png" alt="申鶴" class="card-img">
+              <h5 class="mt-2">申鶴</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/4118109f930588c361d5d79ea14b8f93_7652884089405272723.gif" alt="申鶴" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="6">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E7%2594%2598%25E9%259B%25A8/avatar.png" alt="甘雨" class="card-img">
+              <h5 class="mt-2">甘雨</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/2304b9dfb9ef81b3c825577d4df9ebd6_4029802170462104137.gif" alt="甘雨" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="3">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/30/7998136/1c7aec60047574f90ae0702ee64eaeac_7125928640872806558.png?x-oss-process=image%2Fformat%2Cwebp" alt="琴" class="card-img">
+              <h5 class="mt-2">琴</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/90080e8bd0aab42b39a3010ca17eeb31_8658879144690739697.gif" alt="琴" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="1">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E7%258F%25AD%25E5%25B0%25BC%25E7%2589%25B9/avatar.png" alt="班尼特" class="card-img">
+              <h5 class="mt-2">班尼特</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/ead150a81a57c6c117778e553960d1d4_508027392660488952.gif" alt="班尼特" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="2">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E7%258F%258A%25E7%2591%259A%25E5%25AE%25AB%25E5%25BF%2583%25E6%25B5%25B7/avatar.png" alt="珊瑚宮心海" class="card-img">
+              <h5 class="mt-2">珊瑚宮心海</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/30/7998136/98b55890d53f4f3832ae64df41e3b9f5_8381552751537944122.gif" alt="珊瑚宮心海" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="1">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E7%2583%259F%25E7%25BB%25AF/avatar.png" alt="煙緋" class="card-img">
+              <h5 class="mt-2">煙緋</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/dd61c6d2e7360c9d3a6f78ba9c8ea47d_7381230917677109991.gif" alt="煙緋" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="3">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E6%25B8%25A9%25E8%25BF%25AA/avatar.png" alt="溫迪" class="card-img">
+              <h5 class="mt-2">溫迪</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/94f44a33e8822880a2cb5befe99f0b42_8497227311740473258.gif" alt="溫迪" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="3">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E6%259E%25AB%25E5%258E%259F%25E4%25B8%2587%25E5%258F%25B6/avatar.png" alt="楓原萬葉" class="card-img">
+              <h5 class="mt-2">楓原萬葉</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/b3d265b10301eaf5d3c9dc3c20ce6e88_5971596918218586972.gif" alt="楓原萬葉" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="3">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E6%2597%25A9%25E6%259F%259A/avatar.png" alt="早柚" class="card-img">
+              <h5 class="mt-2">早柚</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/669aa2c27446de567f1753dbab364d86_8899120731515530639.gif" alt="早柚" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="1">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E6%2589%2598%25E9%25A9%25AC/avatar.png" alt="托馬" class="card-img">
+              <h5 class="mt-2">托馬</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/53683b1e6316b624a28e74ba73276254_1382372255208132205.gif" alt="托馬" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="1">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E5%25AE%25B5%25E5%25AE%25AB/avatar.png" alt="宵宮" class="card-img">
+              <h5 class="mt-2">宵宮</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/597cb61eabdc8eb7d3bf404323dade38_3488091939346499216.gif" alt="宵宮" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="1">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E5%25AE%2589%25E6%259F%258F/avatar.png" alt="安柏" class="card-img">
+              <h5 class="mt-2">安柏</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/28/7998136/0ea1c13b56b214e8b6c1d272d123fc94_5293685096812996742.gif" alt="安柏" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="6">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E5%259F%2583%25E6%25B4%259B%25E4%25BC%258A/avatar.png" alt="亞蘿伊" class="card-img">
+              <h5 class="mt-2">亞蘿伊</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/28/7998136/e0fcf47342fd953352d2a2d085f49fb3_6592584410845345568.gif" alt="亞蘿伊" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="1">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E5%258F%25AF%25E8%258E%2589/avatar.png" alt="可莉" class="card-img">
+              <h5 class="mt-2">可莉</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/c15679203d3a22c4fc36346158ffa3e9_4606067269894233674.gif" alt="可莉" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="4">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E5%258C%2597%25E6%2596%2597/avatar.png" alt="北斗" class="card-img">
+              <h5 class="mt-2">北斗</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/0ad9cda631093f8f1f41551f9bedab5f_5436453582241873464.gif" alt="北斗" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="4">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E5%2588%25BB%25E6%2599%25B4/avatar.png" alt="刻晴" class="card-img">
+              <h5 class="mt-2">刻晴</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/6cddb13fe772448f80a7c72019d51f6c_7480890400171334531.gif" alt="刻晴" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="6">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E5%2587%25AF%25E4%25BA%259A/avatar.png" alt="凱亞" class="card-img">
+              <h5 class="mt-2">凱亞</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/0394ca94e7d837ce9b273fa268c3e4d6_7361275836614664506.gif" alt="凱亞" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="7">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E5%2587%259D%25E5%2585%2589/avatar.png" alt="凝光" class="card-img">
+              <h5 class="mt-2">凝光</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/f1c4c97059aa2da43bedd23517e5834b_2443947728727712522.gif" alt="凝光" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="4">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E5%2585%25AB%25E9%2587%258D%25E7%25A5%259E%25E5%25AD%2590/avatar.png" alt="八重神子" class="card-img">
+              <h5 class="mt-2">八重神子</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/0573b361904fffee843e7ce6d3ed8f4a_9098169304192238575.gif" alt="八重神子" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="6">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E4%25BC%2598%25E8%258F%2588/avatar.png" alt="優菈" class="card-img">
+              <h5 class="mt-2">優菈</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/875d2a7e187335adc9d29cabe7ee8c86_3008037550518200269.gif" alt="優菈" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="7">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E4%25BA%2594%25E9%2583%258E/avatar.png" alt="五郎" class="card-img">
+              <h5 class="mt-2">五郎</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/831efa096112971f2ee594aa9f0a2bc0_1302848233848771583.gif" alt="五郎" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="7">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E4%25BA%2591%25E5%25A0%2587/avatar.png" alt="雲堇" class="card-img">
+              <h5 class="mt-2">雲堇</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/a47a02d4797159245ed0155c53d18ca5_5454448156185412210.gif" alt="雲堇" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="4">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E4%25B9%259D%25E6%259D%25A1%25E8%25A3%259F%25E7%25BD%2597/avatar.png" alt="九條裟羅" class="card-img">
+              <h5 class="mt-2">九條裟羅</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/336f0b065cb61b13317f85685b6c14b9_7102550553801764620.gif" alt="九條裟羅" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="4" data-element="4">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/12/15/7998136/64ff2675c8c6e9a14eafe7b6dc73aab4_8542204707251796338.png?x-oss-process=image%2Fformat%2Cwebp" alt="麗莎" class="card-img">
+              <h5 class="mt-2">麗莎</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/29/7998136/8d7bc0aacf62efe2acba5c40120cfafd_8643923400551915912.gif" alt="麗莎" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 character-card" data-star="5" data-element="6">
+        <div class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/%25E4%25B8%2583%25E4%25B8%2583/avatar.png" alt="七七" class="card-img">
+              <h5 class="mt-2">七七</h5>
+            </div>
+            <div class="flip-card-back">
+              <img src="https://upload-static.hoyoverse.com/hoyolab-wiki/2022/07/28/7998136/4395e6044af1c591782705e78df169bf_6090136134349978350.gif" alt="七七" class="card-img">
+            </div>
+          </div>
+        </div>
+      </div>
+
+     
+    </div>
+  </section>
+
 
   <!-- 頁尾 -->
   <footer>
-    © 2025 怡婷的網站．YI TING'S WEBSITE.
+    資料來源於原神官網
+    © 2025 怡婷的網站. YI TING'S WEBSITE.
   </footer>
 
-  <!-- 載入 Bootstrap JavaScript 功能 -->
+  <!-- Bootstrap 5 JS 與 Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    /// 卡片翻轉效果
+    document.querySelectorAll('.flip-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.classList.add('flipped');
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.classList.remove('flipped');
+      });
+
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.classList.toggle('flipped');
+        }
+      });
+    });
+
+    let selectedStar = 'all';
+    let selectedElement = 'all';
+
+    function updateFilters() {
+      document.querySelectorAll('.character-card').forEach(card => {
+        const star = card.getAttribute('data-star');
+        const element = card.getAttribute('data-element');
+
+        const starMatch = (selectedStar === 'all' || star === selectedStar);
+        const elementMatch = (selectedElement === 'all' || element === selectedElement);
+
+        if (starMatch && elementMatch) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    document.querySelectorAll('.star-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.star-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedStar = btn.getAttribute('data-star');
+        updateFilters();
+      });
+    });
+
+    document.querySelectorAll('.element-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.element-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedElement = btn.getAttribute('data-element');
+        updateFilters();
+      });
+    });
+
+    // 初始化
+    updateFilters();
+
+
+    const blocks = document.querySelectorAll('.scroll-block');
+    const image = document.getElementById('country-image');
+
+    function onScroll() {
+      let found = false;
+      blocks.forEach(block => {
+        const rect = block.getBoundingClientRect();
+        if (!found && rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
+          image.src = block.dataset.img;
+          blocks.forEach(b => b.classList.remove('active'));
+          block.classList.add('active');
+          found = true;
+        }
+      });
+    }
+
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('load', onScroll);
+
+    // 預設第一張圖片已設定
+  </script>
 </body>
 
 </html>
